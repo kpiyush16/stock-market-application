@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.stockmarket.userservice.entities.Contact;
 import com.stockmarket.userservice.repositories.ContactRepository;
 
+@Service
 public class ContactService {
 	@Autowired
 	private ContactRepository contactRepository;
@@ -24,7 +26,14 @@ public class ContactService {
 	}
 
 	public void addContact(Contact contact) {
+		contactRepository.save(contact);	
+	}
+	
+	public void updateContact(Contact contact, int id) {
 		contactRepository.save(contact);
-		
+	}
+
+	public void deleteContact(int id) {
+		contactRepository.deleteById(id);
 	}
 }

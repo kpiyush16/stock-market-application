@@ -35,4 +35,14 @@ public class UserController {
 	public void addUser(@RequestBody User user) {
 		userService.addUser(user);
 	}
+	
+	@RequestMapping(method=RequestMethod.PUT, value="/users/{id}")
+	public void updateUser(@RequestBody User user, @PathVariable int id) {
+		userService.updateUser(user, id);
+	}
+	
+	@RequestMapping(method=RequestMethod.DELETE, value="/users/{id}")
+	public void deleteUser(@PathVariable int id) {
+		userService.deleteUser(id);
+	}
 }
