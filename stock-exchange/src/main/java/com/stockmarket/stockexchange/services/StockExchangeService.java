@@ -15,12 +15,12 @@ public class StockExchangeService {
     @Autowired
 	private StockExchangeRepository stockExchangeRepository;
 
-	{
-		StockExchange nse = new StockExchange(1, "NSE", "National Stock Exchange", 1234), 
-		bse = new StockExchange(2, "BSE", "Bombay Stock Exchange", 5678);
-		stockExchangeRepository.save(nse);
-		stockExchangeRepository.save(bse);
-	}
+//	{
+//		StockExchange nse = new StockExchange(1, "NSE", "National Stock Exchange", 1234), 
+//		bse = new StockExchange(2, "BSE", "Bombay Stock Exchange", 5678);
+//		stockExchangeRepository.save(nse);
+//		stockExchangeRepository.save(bse);
+//	}
 	
 	
 	public List<StockExchange> getAllStockExchanges() {
