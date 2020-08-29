@@ -1,17 +1,23 @@
 package com.stockmarket.userservice.entities;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Contact {
 	@Id
-	int id;
-	String email;
-	String phone;
-	String city;
-	String state;
-	String zip;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+	@Column(unique = true)
+	private String email;
+	private String phone;
+	private String city;
+	private String state;
+
+	private String zip;
 
 	public Contact() {
 	}
@@ -72,5 +78,11 @@ public class Contact {
 
 	public void setZip(String zip) {
 		this.zip = zip;
+	}
+	
+	@Override
+	public String toString() {
+		return "Contact [id=" + id + ", email=" + email + ", phone=" + phone + ", city=" + city + ", state=" + state
+				+ ", zip=" + zip + "]";
 	}
 }

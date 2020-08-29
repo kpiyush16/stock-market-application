@@ -32,10 +32,27 @@ public class UserService {
 	}
 
 	public void updateUser(User user, int id) {
+		user.setId(id);
+		User curr_user = userRepository.findById(id).get();
+		if(curr_user.getContact() != null) {
+			user.getContact().setId(curr_user.getContact().getId());
+		}
 		userRepository.save(user);
 	}
 
 	public void deleteUser(int id) {
 		userRepository.deleteById(id);
+	}
+
+	public boolean getLogin(User user) {
+		Iterable<User> iterable = userRepository.findAll();
+		boolean found = false;
+		for(User u : iterable) {
+            if(u.getUsername().equals(user.getUsername())){
+                found = u.getPassword().equals(user.getPassword());
+                break;
+            }
+		}
+		return found;
 	}
 }

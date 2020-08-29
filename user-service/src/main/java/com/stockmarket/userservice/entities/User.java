@@ -1,29 +1,42 @@
 package com.stockmarket.userservice.entities;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+//import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class User {
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	@Column(nullable = false)
 	private int confirmed;
+	@Column(unique = true)
 	private String username;
 	private String password;
 	private String userType;
-	private int contactId;
+	
+	@OneToOne(fetch = FetchType.LAZY,
+            cascade =  CascadeType.ALL)
+	private Contact contact;
 
 	public User() {
 	}
 
-	public User(int id, int confirmed, String username, String password, String userType, int contactId) {
+	public User(int id, int confirmed, String username, String password, String userType, Contact contact) {
 		super();
 		this.id = id;
 		this.confirmed = confirmed;
 		this.username = username;
 		this.password = password;
 		this.userType = userType;
-		this.contactId = contactId;
+		this.contact = contact;
 	}
 
 	public int getId() {
@@ -66,11 +79,20 @@ public class User {
 		this.userType = userType;
 	}
 
-	public int getContactId() {
-		return contactId;
+	public Contact getContact() {
+		return contact;
 	}
 
-	public void setContactId(int contactId) {
-		this.contactId = contactId;
+	public void setContact(Contact contact) {
+		this.contact = contact;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", confirmed=" + confirmed + ", username=" + username + ", password=" + password
+				+ ", userType=" + userType + ", contact=" + contact + "]";
+	}
+
+	
+	
 }

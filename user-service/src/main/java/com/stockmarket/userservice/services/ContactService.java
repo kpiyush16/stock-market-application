@@ -30,6 +30,7 @@ public class ContactService {
 	}
 	
 	public void updateContact(Contact contact, int id) {
+		contact.setId(id);
 		contactRepository.save(contact);
 	}
 
