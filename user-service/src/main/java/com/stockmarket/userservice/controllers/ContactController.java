@@ -24,19 +24,17 @@ public class ContactController {
 	
 	@RequestMapping("/contacts/{id}")
 	public Contact getContact(@PathVariable int id) {
-//		Contact contact = new User(9898, "sus@gmail.com", "875647", "patna", "bihar", "800003");
 		return contactService.getContact(id);
-//		return contact;
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/contacts")
-	public void addContact(@RequestBody Contact contact) {
-		contactService.addContact(contact);
+	public Contact addContact(@RequestBody Contact contact) {
+		return contactService.addContact(contact);
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/contacts/{id}")
-	public void updateContact(@RequestBody Contact contact, @PathVariable int id) {
-		contactService.updateContact(contact, id);
+	public Contact updateContact(@RequestBody Contact contact, @PathVariable int id) {
+		return contactService.updateContact(contact, id);
 	}
 	
 	@RequestMapping(method=RequestMethod.DELETE, value="/contacts/{id}")

@@ -3,12 +3,17 @@ package com.stockmarket.stockexchange.entities;
 import java.time.LocalDateTime;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Ipo {
     
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Id;
     private LocalDateTime closeDateTime;
     private LocalDateTime openDateTime;
@@ -16,9 +21,27 @@ public class Ipo {
     private double sharePrice;
     private int totalShares;
     private int companyId;
-    
+    @ManyToOne(fetch = FetchType.LAZY)
+	private StockExchange stockExchange;
 
-    /**
+    public Ipo() {
+		super();
+	}
+
+	public Ipo(int id, LocalDateTime closeDateTime, LocalDateTime openDateTime, String remarks, double sharePrice,
+			int totalShares, int companyId, StockExchange stockExchange) {
+		super();
+		Id = id;
+		this.closeDateTime = closeDateTime;
+		this.openDateTime = openDateTime;
+		this.remarks = remarks;
+		this.sharePrice = sharePrice;
+		this.totalShares = totalShares;
+		this.companyId = companyId;
+		this.stockExchange = stockExchange;
+	}
+
+	/**
      * @return int return the Id
      */
     public int getId() {
@@ -116,4 +139,21 @@ public class Ipo {
         this.companyId = companyId;
     }
 
+	public StockExchange getStockExchange() {
+		return stockExchange;
+	}
+
+	public void setStockExchange(StockExchange stockExchange) {
+		this.stockExchange = stockExchange;
+	}
+
+	@Override
+	public String toString() {
+		return "Ipo [Id=" + Id + ", closeDateTime=" + closeDateTime + ", openDateTime=" + openDateTime + ", remarks="
+				+ remarks + ", sharePrice=" + sharePrice + ", totalShares=" + totalShares + ", companyId=" + companyId
+				+ ", stockExchange=" + stockExchange + "]";
+	}
+
+	
+    
 }

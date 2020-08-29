@@ -42,4 +42,19 @@ public class StockController {
 	public void deletestock(@PathVariable int id) {
 		stockService.deleteStock(id);
 	}
+	
+	@RequestMapping("/stockexchanges/{stockExchangeId}/comapnies/{companyId}/stocks")
+    public List<Stock> getAllStocksByStockExchangeAndCompany(@PathVariable int stockExchangeId, @PathVariable int companyId){
+        return stockService.getStocksByStockExchangeAndCompany(stockExchangeId, companyId);
+    }
+	
+	@RequestMapping("/stockexchanges/{stockExchangeId}/stocks")
+    public List<Stock> getAllStocksByStockExchange(@PathVariable int stockExchangeId) {
+        return stockService.getStocksByStockExchange(stockExchangeId);
+    }
+	
+	@RequestMapping("/comapnies/{companyId}/stocks")
+    public List<Stock> getAllStocksByCompany(@PathVariable int companyId) {
+        return stockService.getStocksByCompany(companyId);
+    }
 }

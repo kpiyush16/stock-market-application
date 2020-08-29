@@ -37,4 +37,25 @@ public class IpoService {
     public void deleteIpo(int id) {
         ipoRepository.deleteById(id);
     }
+    
+    public List<Ipo> getAllIposByCompany(int companyId) {
+        List<Ipo> ipoList = new ArrayList<>();
+        ipoRepository.findByCompanyId(companyId)
+        .forEach(ipoList::add);
+        return ipoList;
+    }
+    
+    public List<Ipo> getAllIposByStockExchange(int stockExchangeId) {
+        List<Ipo> ipoList = new ArrayList<>();
+        ipoRepository.findByStockExchangeId(stockExchangeId)
+        .forEach(ipoList::add);
+        return ipoList;
+    }
+    
+    public List<Ipo> getAllIposByStockExchangeAndCompany( int stockExchangeId, int companyId){
+        List<Ipo> ipoList = new ArrayList<>();
+        ipoRepository.findByStockExchangeIdAndCompanyId(stockExchangeId, companyId)
+        .forEach(ipoList::add);
+        return ipoList;
+    }
 }

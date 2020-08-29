@@ -25,13 +25,13 @@ public class ContactService {
 		return contactRepository.findById(id).get();
 	}
 
-	public void addContact(Contact contact) {
-		contactRepository.save(contact);	
+	public Contact addContact(Contact contact) {
+		return contactRepository.save(contact);	
 	}
 	
-	public void updateContact(Contact contact, int id) {
+	public Contact updateContact(Contact contact, int id) {
 		contact.setId(id);
-		contactRepository.save(contact);
+		return contactRepository.save(contact);
 	}
 
 	public void deleteContact(int id) {

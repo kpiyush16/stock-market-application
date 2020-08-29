@@ -7,7 +7,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -15,7 +14,6 @@ public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(nullable = false)
 	private int confirmed;
 	@Column(unique = true)
 	private String username;

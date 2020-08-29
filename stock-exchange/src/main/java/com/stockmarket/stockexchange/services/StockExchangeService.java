@@ -39,6 +39,7 @@ public class StockExchangeService {
 	}
 	
 	public void updateStockExchange(StockExchange stockExchange, int id) {
+		stockExchange.setId(id);
 		stockExchangeRepository.save(stockExchange);
 	}
 

@@ -2,28 +2,42 @@ package com.stockmarket.stockexchange.entities;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-
 import javax.persistence.Entity;
-// import javax.persistence.GeneratedValue;
-// import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Stock {
 
     @Id
-    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
-    private double closePrice;
-    private double companyTurnover;
+    private int companyId;
+    private double price;
     private LocalDate date;
     private LocalDateTime dateTime;
-    private double openPrice;
-    private int companyId;
-    private int stockExchange;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private StockExchange stockExchange;
 
-    /**
+    public Stock() {
+	}
+	
+	public Stock(int id, int companyId, double price, LocalDate date, LocalDateTime dateTime,
+			StockExchange stockExchange) {
+		super();
+		this.id = id;
+		this.companyId = companyId;
+		this.price = price;
+		this.date = date;
+		this.dateTime = dateTime;
+		this.stockExchange = stockExchange;
+	}
+	
+
+	/**
      * @return int return the id
      */
     public int getId() {
@@ -36,36 +50,16 @@ public class Stock {
     public void setId(int id) {
         this.id = id;
     }
+    
+    public double getPrice() {
+		return price;
+	}
 
-    /**
-     * @return double return the closePrice
-     */
-    public double getClosePrice() {
-        return closePrice;
-    }
+	public void setPrice(double price) {
+		this.price = price;
+	}
 
-    /**
-     * @param closePrice the closePrice to set
-     */
-    public void setClosePrice(double closePrice) {
-        this.closePrice = closePrice;
-    }
-
-    /**
-     * @return double return the companyTurnover
-     */
-    public double getCompanyTurnover() {
-        return companyTurnover;
-    }
-
-    /**
-     * @param companyTurnover the companyTurnover to set
-     */
-    public void setCompanyTurnover(double companyTurnover) {
-        this.companyTurnover = companyTurnover;
-    }
-
-    /**
+	/**
      * @return LocalDate return the date
      */
     public LocalDate getDate() {
@@ -94,20 +88,6 @@ public class Stock {
     }
 
     /**
-     * @return double return the openPrice
-     */
-    public double getOpenPrice() {
-        return openPrice;
-    }
-
-    /**
-     * @param openPrice the openPrice to set
-     */
-    public void setOpenPrice(double openPrice) {
-        this.openPrice = openPrice;
-    }
-
-    /**
      * @return int return the companyId
      */
     public int getCompanyId() {
@@ -121,18 +101,20 @@ public class Stock {
         this.companyId = companyId;
     }
 
-    /**
-     * @return int return the stockExchange
-     */
-    public int getStockExchange() {
-        return stockExchange;
-    }
+	public StockExchange getStockExchange() {
+		return stockExchange;
+	}
 
-    /**
-     * @param stockExchange the stockExchange to set
-     */
-    public void setStockExchange(int stockExchange) {
-        this.stockExchange = stockExchange;
-    }
+	public void setStockExchange(StockExchange stockExchange) {
+		this.stockExchange = stockExchange;
+	}
+
+	@Override
+	public String toString() {
+		return "Stock [id=" + id + ", companyId=" + companyId + ", price=" + price + ", date=" + date + ", dateTime="
+				+ dateTime + ", stockExchange=" + stockExchange + "]";
+	}
+	
+	
 
 }

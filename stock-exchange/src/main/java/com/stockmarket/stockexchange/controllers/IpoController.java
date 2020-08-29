@@ -20,11 +20,12 @@ public class IpoController {
     @Autowired
     private IpoService ipoService;
 
+    @GetMapping("/ipos")
     public List<Ipo> getAllIpos() {
         return ipoService.getAllIpos();
     }
 
-    @GetMapping("/stocks/{id}")
+    @GetMapping("/ipos/{id}")
     public Ipo getIpo(@PathVariable int id) {
         return ipoService.getIpo(id);
     }
@@ -43,4 +44,21 @@ public class IpoController {
 	public void deleteIpo(@PathVariable int id) {
 		ipoService.deleteIpo(id);
 	}
+	
+	@GetMapping("/companies/{companyId}/ipos")
+    public List<Ipo> getAllIposByCompany(@PathVariable int companyId) {
+        return ipoService.getAllIposByCompany(companyId);
+    }
+	
+	@GetMapping("/stockexchanges/{stockExchangeId}/ipos")
+    public List<Ipo> getAllIposByStockExchange(@PathVariable int stockExchangeId) {
+        return ipoService.getAllIposByStockExchange(stockExchangeId);
+    }
+	
+	@GetMapping("/stockexchanges/{stockExchangeId}/companies/{companyId}/ipos")
+    public List<Ipo> getAllIposByStockExchangeAndCompany(@PathVariable int stockExchangeId, @PathVariable int companyId){
+        return ipoService.getAllIposByStockExchangeAndCompany(stockExchangeId, companyId);
+    }
+	
+	
 }
