@@ -1,38 +1,57 @@
 package com.example.company.entities;
 
+//import java.util.ArrayList;
+import java.util.HashSet;
+//import java.util.List;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
 
 @Entity
 public class Company {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String ceo;
     private String brief;
     private String code;
+    @Column(unique=true)
     private String name;
-    private int contact_id;
-    private int sector_id;
-    private int stock_exchange_id;
+    private int contactId;
+    
+    @ManyToMany
+    @JoinTable(name = "company_sector", 
+    		joinColumns = {@JoinColumn(name = "company_id")},
+    		inverseJoinColumns = {@JoinColumn(name = "sector_id")}
+    )
+    private Set<Sector> sector = new HashSet<>();
+    
 
     @ElementCollection
-    private List<String> boardOfDirectors = new Arraylist<String>():
+    private Set<String> boardOfDirectors = new HashSet<>();
 
     public Company(){
 
     }
 
-    public Company(int id, String ceo, String brief, String code, String name, int contact_id, int sector_id, int stock_exchange_id, List<String> boardOfDirectors) {
+    public Company(int id, String ceo, String brief, String code, String name, int contactId, Set<Sector> sector, Set<String> boardOfDirectors) {
         super();
         this.id = id;
         this.ceo = ceo;
         this.brief = brief;
         this.code = code;
         this.name = name;
-        this.contact_id = contact_id;
-        this.sector_id = sector_id;
-        this.stock_exchange_id = stock_exchange_id;
+        this.contactId = contactId;
+        this.sector = sector;
         this.boardOfDirectors = boardOfDirectors;
     }
 
@@ -76,35 +95,27 @@ public class Company {
         this.name = name;
     }
 
-    public int getContact_id() {
-        return contact_id;
+    public int getContactId() {
+        return contactId;
     }
 
-    public void setContact_id(int contact_id) {
-        this.contact_id = contact_id;
+    public void setContactId(int contactId) {
+        this.contactId = contactId;
     }
+    
+    public Set<Sector> getSector() {
+		return sector;
+	}
 
-    public int getSector_id() {
-        return sector_id;
-    }
+	public void setSector(Set<Sector> sector) {
+		this.sector = sector;
+	}
 
-    public void setSector_id(int sector_id) {
-        this.sector_id = sector_id;
-    }
-
-    public int getStock_exchange_id() {
-        return stock_exchange_id;
-    }
-
-    public void setStock_exchange_id(int stock_exchange_id) {
-        this.stock_exchange_id = stock_exchange_id;
-    }
-
-    public List<String> getBoardOfDirectors() {
+    public Set<String> getBoardOfDirectors() {
         return boardOfDirectors;
     }
 
-    public void setBoardOfDirectors(List<String> boardOfDirectors) {
+	public void setBoardOfDirectors(Set<String> boardOfDirectors) {
         this.boardOfDirectors = boardOfDirectors;
     }
 

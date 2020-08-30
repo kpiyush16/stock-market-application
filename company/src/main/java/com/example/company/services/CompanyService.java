@@ -39,4 +39,11 @@ public class CompanyService {
     public void deleteCompany(int id) {
         CompanyRepository.deleteById(id);
     }
+    
+    public List<Company> getAllCompaniesBySector(int sectorId){
+    	List<Company> companyList = new ArrayList<>();
+    	CompanyRepository.findBySectorId(sectorId)
+    	.forEach(companyList::add);
+    	return companyList;
+    }
 }

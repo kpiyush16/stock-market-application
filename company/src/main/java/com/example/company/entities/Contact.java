@@ -1,4 +1,4 @@
-package com.stockmarket.stockexchange.entities;
+package com.example.company.entities;
 
 public class Contact {
 	private int id;

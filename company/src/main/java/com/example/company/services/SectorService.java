@@ -3,8 +3,6 @@ package com.example.company.services;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.example.company.entities.Company;
-import com.example.company.repositories.CompanyRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

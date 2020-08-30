@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 import com.stockmarket.stockexchange.entities.Company;
 import com.stockmarket.stockexchange.entities.StockExchange;
@@ -25,6 +26,9 @@ public class StockExchange_CompanyController {
 	
 	@Autowired
 	private StockExchangeService stockExchangeService;
+
+	@Autowired
+	private RestTemplate restTemplate;
 	
 	@GetMapping("/stockexchanges/{stockExchangeId}/companies")
 	public List<Company> getAllCompanies(@PathVariable int stockExchangeId) {
@@ -32,8 +36,8 @@ public class StockExchange_CompanyController {
 		stockExchange_CompanyService.getAllCompanies(stockExchangeId)
 		.forEach(
 			t -> {
-				// TODO Call company microservice
-				companyList.add(new Company());
+				Company company = restTemplate.getForObject("http://company-service/companies/"+t, Company.class);
+				companyList.add(company);
 			}
 		);
 		return companyList;

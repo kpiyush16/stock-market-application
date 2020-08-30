@@ -1,19 +1,9 @@
-package com.example.company.entities;
+package com.stockmarket.stockexchange.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
 public class Sector {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String brief;
-    @Column(unique=true)
     private String name;
 
     public Sector(){
