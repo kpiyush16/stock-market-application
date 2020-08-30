@@ -16,11 +16,14 @@ public class Company {
     private int sector_id;
     private int stock_exchange_id;
 
+    @ElementCollection
+    private List<String> boardOfDirectors = new Arraylist<String>():
+
     public Company(){
 
     }
 
-    public Company(int id, String ceo, String brief, String code, String name, int contact_id, int sector_id, int stock_exchange_id) {
+    public Company(int id, String ceo, String brief, String code, String name, int contact_id, int sector_id, int stock_exchange_id, List<String> boardOfDirectors) {
         super();
         this.id = id;
         this.ceo = ceo;
@@ -30,6 +33,7 @@ public class Company {
         this.contact_id = contact_id;
         this.sector_id = sector_id;
         this.stock_exchange_id = stock_exchange_id;
+        this.boardOfDirectors = boardOfDirectors;
     }
 
     public int getId() {
@@ -96,5 +100,12 @@ public class Company {
         this.stock_exchange_id = stock_exchange_id;
     }
 
+    public List<String> getBoardOfDirectors() {
+        return boardOfDirectors;
+    }
+
+    public void setBoardOfDirectors(List<String> boardOfDirectors) {
+        this.boardOfDirectors = boardOfDirectors;
+    }
 
 }
