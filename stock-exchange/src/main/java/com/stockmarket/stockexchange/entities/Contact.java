@@ -6,7 +6,6 @@ public class Contact {
 	private String phone;
 	private String city;
 	private String state;
-
 	private String zip;
 
 	public Contact() {
@@ -20,6 +19,12 @@ public class Contact {
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
+	}
+
+	@Override
+	public String toString() {
+		return "Contact [id=" + id + ", email=" + email + ", phone=" + phone + ", city=" + city + ", state=" + state
+				+ ", zip=" + zip + "]";
 	}
 
 	public int getId() {
@@ -69,11 +74,5 @@ public class Contact {
 	public void setZip(String zip) {
 		this.zip = zip;
 	}
-	
-	@Override
-	public String toString() {
-		return "Contact [id=" + id + ", email=" + email + ", phone=" + phone + ", city=" + city + ", state=" + state
-				+ ", zip=" + zip + "]";
-	}
-}
 
+}

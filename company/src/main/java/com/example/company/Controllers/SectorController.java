@@ -1,7 +1,5 @@
 package com.example.company.Controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.company.entities.Sector;
+import com.example.company.entities.SectorList;
 import com.example.company.services.SectorService;
 
 @RestController
@@ -20,8 +19,9 @@ public class SectorController {
 
 
     @RequestMapping("/sectors")
-    public List<Sector> getAllsectors() {
-        return sectorService.getAllsectors();
+    public SectorList getAllsectors() {
+    	SectorList sectorList = new SectorList(sectorService.getAllsectors());
+		return sectorList;
     }
 
     @RequestMapping("/sectors/{id}")

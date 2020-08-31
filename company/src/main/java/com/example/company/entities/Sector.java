@@ -9,45 +9,52 @@ import javax.persistence.Id;
 @Entity
 public class Sector {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String brief;
-    @Column(unique=true)
-    private String name;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
-    public Sector(){
+	@Column(unique = true, nullable=false)
+	private String name;
 
-    }
+	private String brief;
 
-    public Sector(int id, String brief, String name) {
-        super();
-        this.id = id;
-        this.brief = brief;
-        this.name = name;
-    }
+	public Sector() {
 
-    public int getId() {
-        return id;
-    }
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public Sector(int id, String name, String brief) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.brief = brief;
+	}
 
-    public String getBrief() {
-        return brief;
-    }
+	@Override
+	public String toString() {
+		return "Sector [id=" + id + ", name=" + name + ", brief=" + brief + "]";
+	}
 
-    public void setBrief(String brief) {
-        this.brief = brief;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getBrief() {
+		return brief;
+	}
+
+	public void setBrief(String brief) {
+		this.brief = brief;
+	}
 }

@@ -1,43 +1,48 @@
 package com.stockmarket.stockexchange.entities;
 
 public class Sector {
+	private int id;
+	private String name;
+	private String brief;
 
-    private int id;
-    private String brief;
-    private String name;
+	public Sector() {
 
-    public Sector(){
+	}
 
-    }
+	public Sector(int id, String name, String brief) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.brief = brief;
+	}
 
-    public Sector(int id, String brief, String name) {
-        super();
-        this.id = id;
-        this.brief = brief;
-        this.name = name;
-    }
+	@Override
+	public String toString() {
+		return "Sector [id=" + id + ", name=" + name + ", brief=" + brief + "]";
+	}
 
-    public int getId() {
-        return id;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public String getBrief() {
-        return brief;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public void setBrief(String brief) {
-        this.brief = brief;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getBrief() {
+		return brief;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setBrief(String brief) {
+		this.brief = brief;
+	}
+
 }

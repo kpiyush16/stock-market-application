@@ -1,8 +1,5 @@
 package com.stockmarket.userservice.controllers;
 
-//import java.util.ArrayList;
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stockmarket.userservice.entities.User;
+import com.stockmarket.userservice.entities.UserList;
 import com.stockmarket.userservice.services.UserService;
 
 @RestController
@@ -22,8 +20,9 @@ public class UserController {
 	private UserService userService;
 	
 	@RequestMapping("/users")
-	public List<User> getAllUsers() {
-		return userService.getAllUsers();
+	public UserList getAllUsers() {
+		UserList userList = new UserList(userService.getAllUsers());
+		return userList;
 	}
 	
 	@RequestMapping("/users/{id}")

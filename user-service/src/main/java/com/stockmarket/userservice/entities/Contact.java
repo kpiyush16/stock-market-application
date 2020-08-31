@@ -8,15 +8,17 @@ import javax.persistence.Id;
 
 @Entity
 public class Contact {
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(unique = true)
+
+	@Column(unique = true, nullable=false)
 	private String email;
+
 	private String phone;
 	private String city;
 	private String state;
-
 	private String zip;
 
 	public Contact() {
@@ -30,6 +32,12 @@ public class Contact {
 		this.city = city;
 		this.state = state;
 		this.zip = zip;
+	}
+
+	@Override
+	public String toString() {
+		return "Contact [id=" + id + ", email=" + email + ", phone=" + phone + ", city=" + city + ", state=" + state
+				+ ", zip=" + zip + "]";
 	}
 
 	public int getId() {
@@ -78,11 +86,5 @@ public class Contact {
 
 	public void setZip(String zip) {
 		this.zip = zip;
-	}
-	
-	@Override
-	public String toString() {
-		return "Contact [id=" + id + ", email=" + email + ", phone=" + phone + ", city=" + city + ", state=" + state
-				+ ", zip=" + zip + "]";
 	}
 }

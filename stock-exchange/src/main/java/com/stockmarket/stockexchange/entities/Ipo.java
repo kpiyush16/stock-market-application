@@ -11,133 +11,100 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Ipo {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int Id;
-    private LocalDateTime closeDateTime;
-    private LocalDateTime openDateTime;
-    private String remarks;
-    private double sharePrice;
-    private int totalShares;
-    private int companyId;
-    @ManyToOne(fetch = FetchType.LAZY)
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int Id;
+
+	private int companyId;
+	private double sharePrice;
+	private int totalShares;
+	private LocalDateTime openDateTime;
+	private LocalDateTime closeDateTime;
+	private String remarks;
+
+	@ManyToOne(fetch = FetchType.LAZY)
 	private StockExchange stockExchange;
 
-    public Ipo() {
+	public Ipo() {
 		super();
 	}
 
-	public Ipo(int id, LocalDateTime closeDateTime, LocalDateTime openDateTime, String remarks, double sharePrice,
-			int totalShares, int companyId, StockExchange stockExchange) {
+	public Ipo(int id, int companyId, double sharePrice, int totalShares, LocalDateTime openDateTime,
+			LocalDateTime closeDateTime, String remarks, StockExchange stockExchange) {
 		super();
 		Id = id;
-		this.closeDateTime = closeDateTime;
-		this.openDateTime = openDateTime;
-		this.remarks = remarks;
+		this.companyId = companyId;
 		this.sharePrice = sharePrice;
 		this.totalShares = totalShares;
-		this.companyId = companyId;
+		this.openDateTime = openDateTime;
+		this.closeDateTime = closeDateTime;
+		this.remarks = remarks;
 		this.stockExchange = stockExchange;
 	}
 
-	/**
-     * @return int return the Id
-     */
-    public int getId() {
-        return Id;
-    }
+	@Override
+	public String toString() {
+		return "Ipo [Id=" + Id + ", companyId=" + companyId + ", sharePrice=" + sharePrice + ", totalShares="
+				+ totalShares + ", openDateTime=" + openDateTime + ", closeDateTime=" + closeDateTime + ", remarks="
+				+ remarks + ", stockExchange=" + stockExchange + "]";
+	}
 
-    /**
-     * @param Id the Id to set
-     */
-    public void setId(int Id) {
-        this.Id = Id;
-    }
+	public int getId() {
+		return Id;
+	}
 
-    /**
-     * @return LocalDateTime return the closeDateTime
-     */
-    public LocalDateTime getCloseDateTime() {
-        return closeDateTime;
-    }
+	public void setId(int id) {
+		Id = id;
+	}
 
-    /**
-     * @param closeDateTime the closeDateTime to set
-     */
-    public void setCloseDateTime(LocalDateTime closeDateTime) {
-        this.closeDateTime = closeDateTime;
-    }
+	public int getCompanyId() {
+		return companyId;
+	}
 
-    /**
-     * @return LocalDateTime return the openDateTime
-     */
-    public LocalDateTime getOpenDateTime() {
-        return openDateTime;
-    }
+	public void setCompanyId(int companyId) {
+		this.companyId = companyId;
+	}
 
-    /**
-     * @param openDateTime the openDateTime to set
-     */
-    public void setOpenDateTime(LocalDateTime openDateTime) {
-        this.openDateTime = openDateTime;
-    }
+	public double getSharePrice() {
+		return sharePrice;
+	}
 
-    /**
-     * @return String return the remarks
-     */
-    public String getRemarks() {
-        return remarks;
-    }
+	public void setSharePrice(double sharePrice) {
+		this.sharePrice = sharePrice;
+	}
 
-    /**
-     * @param remarks the remarks to set
-     */
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
+	public int getTotalShares() {
+		return totalShares;
+	}
 
-    /**
-     * @return double return the sharePrice
-     */
-    public double getSharePrice() {
-        return sharePrice;
-    }
+	public void setTotalShares(int totalShares) {
+		this.totalShares = totalShares;
+	}
 
-    /**
-     * @param sharePrice the sharePrice to set
-     */
-    public void setSharePrice(double sharePrice) {
-        this.sharePrice = sharePrice;
-    }
+	public LocalDateTime getOpenDateTime() {
+		return openDateTime;
+	}
 
-    /**
-     * @return int return the totalShares
-     */
-    public int getTotalShares() {
-        return totalShares;
-    }
+	public void setOpenDateTime(LocalDateTime openDateTime) {
+		this.openDateTime = openDateTime;
+	}
 
-    /**
-     * @param totalShares the totalShares to set
-     */
-    public void setTotalShares(int totalShares) {
-        this.totalShares = totalShares;
-    }
+	public LocalDateTime getCloseDateTime() {
+		return closeDateTime;
+	}
 
-    /**
-     * @return int return the companyId
-     */
-    public int getCompanyId() {
-        return companyId;
-    }
+	public void setCloseDateTime(LocalDateTime closeDateTime) {
+		this.closeDateTime = closeDateTime;
+	}
 
-    /**
-     * @param companyId the companyId to set
-     */
-    public void setCompanyId(int companyId) {
-        this.companyId = companyId;
-    }
+	public String getRemarks() {
+		return remarks;
+	}
+
+	public void setRemarks(String remarks) {
+		this.remarks = remarks;
+	}
 
 	public StockExchange getStockExchange() {
 		return stockExchange;
@@ -147,13 +114,4 @@ public class Ipo {
 		this.stockExchange = stockExchange;
 	}
 
-	@Override
-	public String toString() {
-		return "Ipo [Id=" + Id + ", closeDateTime=" + closeDateTime + ", openDateTime=" + openDateTime + ", remarks="
-				+ remarks + ", sharePrice=" + sharePrice + ", totalShares=" + totalShares + ", companyId=" + companyId
-				+ ", stockExchange=" + stockExchange + "]";
-	}
-
-	
-    
 }

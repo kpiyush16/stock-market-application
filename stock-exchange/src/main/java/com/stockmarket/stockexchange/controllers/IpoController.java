@@ -1,8 +1,7 @@
 package com.stockmarket.stockexchange.controllers;
 
-import java.util.List;
-
 import com.stockmarket.stockexchange.entities.Ipo;
+import com.stockmarket.stockexchange.entities.IpoList;
 import com.stockmarket.stockexchange.services.IpoService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +20,9 @@ public class IpoController {
     private IpoService ipoService;
 
     @GetMapping("/ipos")
-    public List<Ipo> getAllIpos() {
-        return ipoService.getAllIpos();
+    public IpoList getAllIpos() {
+    	IpoList ipoList = new IpoList(ipoService.getAllIpos());
+		return ipoList;
     }
 
     @GetMapping("/ipos/{id}")
@@ -45,19 +45,22 @@ public class IpoController {
 		ipoService.deleteIpo(id);
 	}
 	
-	@GetMapping("/companies/{companyId}/ipos")
-    public List<Ipo> getAllIposByCompany(@PathVariable int companyId) {
-        return ipoService.getAllIposByCompany(companyId);
+	@GetMapping("/ipos/companies/{companyId}")
+    public IpoList getAllIposByCompany(@PathVariable int companyId) {
+		IpoList ipoList = new IpoList(ipoService.getAllIposByCompany(companyId));
+		return ipoList;
     }
 	
-	@GetMapping("/stockexchanges/{stockExchangeId}/ipos")
-    public List<Ipo> getAllIposByStockExchange(@PathVariable int stockExchangeId) {
-        return ipoService.getAllIposByStockExchange(stockExchangeId);
+	@GetMapping("/ipos/stockexchanges/{stockExchangeId}")
+    public IpoList getAllIposByStockExchange(@PathVariable int stockExchangeId) {
+		IpoList ipoList = new IpoList(ipoService.getAllIposByStockExchange(stockExchangeId));
+		return ipoList;
     }
 	
-	@GetMapping("/stockexchanges/{stockExchangeId}/companies/{companyId}/ipos")
-    public List<Ipo> getAllIposByStockExchangeAndCompany(@PathVariable int stockExchangeId, @PathVariable int companyId){
-        return ipoService.getAllIposByStockExchangeAndCompany(stockExchangeId, companyId);
+	@GetMapping("/ipos/stockexchanges/{stockExchangeId}/companies/{companyId}")
+    public IpoList getAllIposByStockExchangeAndCompany(@PathVariable int stockExchangeId, @PathVariable int companyId){
+		IpoList ipoList = new IpoList(ipoService.getAllIposByStockExchangeAndCompany(stockExchangeId, companyId));
+		return ipoList;
     }
 	
 	

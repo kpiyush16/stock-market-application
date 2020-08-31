@@ -1,32 +1,14 @@
-package com.stockmarket.stockexchange.entities;
+package com.example.company.entities;
 
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CollectionTable;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-
-@Entity
 public class StockExchange {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
-	@Column(unique = true, nullable=false)
 	private String name;
-
 	private String brief;
 	private String remarks;
 	private int contactId;
-
-	@ElementCollection
-	@CollectionTable(name = "stock_exchange_companies")
 	Set<Integer> companiesId = new HashSet<>();
 
 	public StockExchange() {

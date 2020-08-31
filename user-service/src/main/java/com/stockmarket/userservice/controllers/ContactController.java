@@ -1,7 +1,5 @@
 package com.stockmarket.userservice.controllers;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.stockmarket.userservice.entities.Contact;
+import com.stockmarket.userservice.entities.ContactList;
 import com.stockmarket.userservice.services.ContactService;
 
 @RestController
@@ -18,8 +17,9 @@ public class ContactController {
 	private ContactService contactService;
 	
 	@RequestMapping("/contacts")
-	public List<Contact> getAllContacts() {
-		return contactService.getAllContacts();
+	public ContactList getAllContacts() {
+		ContactList contactList = new ContactList(contactService.getAllContacts());
+		return contactList;
 	}
 	
 	@RequestMapping("/contacts/{id}")

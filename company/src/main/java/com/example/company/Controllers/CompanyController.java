@@ -1,7 +1,8 @@
 package com.example.company.Controllers;
 
-
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -16,7 +17,11 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 import com.example.company.entities.Company;
+import com.example.company.entities.CompanyList;
 import com.example.company.entities.Contact;
+import com.example.company.entities.Sector;
+import com.example.company.entities.StockExchange;
+import com.example.company.entities.StockExchangeList;
 import com.example.company.services.CompanyService;
 
 @RestController
@@ -29,8 +34,9 @@ public class CompanyController {
     private RestTemplate restTemplate;
 
     @RequestMapping("/companies")
-    public List<Company> getAllCompanies() {
-        return companyService.getAllCompanies();
+    public CompanyList getAllCompanies() {
+    	CompanyList companyList = new CompanyList(companyService.getAllCompanies());
+		return companyList;
     }
 
     @RequestMapping("/companies/{id}")
@@ -53,14 +59,38 @@ public class CompanyController {
         companyService.deleteCompany(id);
     }
     
-    @RequestMapping("sector/{sectorId}/companies")
-    public List<Company> getCompaniesBySector(@PathVariable int sectorId) {
-        return companyService.getAllCompaniesBySector(sectorId);
+    @GetMapping("/companies/sectors/{sectorId}")
+    public CompanyList getCompaniesBySector(@PathVariable int sectorId) {
+    	CompanyList companyList = new CompanyList(companyService.getAllCompaniesBySector(sectorId));
+		return companyList;
     }
+    
+    @PostMapping("/companies/{id}/sectors")
+	public void addSector(@RequestBody Sector sector, @PathVariable int id) {
+		companyService.addSector(id, sector);
+	}
+	
+	@DeleteMapping("/companies/{id}/sectors/{sectorId}")
+	public void deleteSector(@PathVariable int sectorId, @PathVariable int id) {
+		companyService.deleteSector(id, sectorId);
+	}
+	
+	@PostMapping("/companies/{id}/boardofdirectors")
+	public void addBoardOfDirector(@RequestBody String boardOfDirector, @PathVariable int id) {
+		companyService.addBoardOfDirector(id, boardOfDirector);
+	}
+	
+	@DeleteMapping("/companies/{id}/boardofdirectors/{boardOfDirector}")
+	public void deleteBoardOfDirector(@PathVariable String boardOfDirector, @PathVariable int id) {
+		companyService.deleteBoardOfDirector(id, boardOfDirector);
+	}
     
     @GetMapping("/companies/{id}/contacts/{contactId}")
 	public Contact getContact(@PathVariable int id, @PathVariable int contactId) {
-		return restTemplate.getForObject("http://user-service/contacts/"+contactId, Contact.class);
+    	if(companyService.getCompany(id).getContactId() == contactId) {
+    		return restTemplate.getForObject("http://user-service/contacts/"+contactId, Contact.class);
+    	}
+		return null;
 	}
 	
 	@PostMapping("/companies/{id}/contacts")
@@ -78,7 +108,35 @@ public class CompanyController {
 	
 	@DeleteMapping("/companies/{id}/contacts/{contactId}")
 	public void deleteContact(@PathVariable int id, @PathVariable int contactId) {
-		restTemplate.delete("http://user-service/contacts/"+contactId,Contact.class);
+		Company company = companyService.getCompany(id);
+		if(company.getContactId() == contactId) {
+			restTemplate.delete("http://user-service/contacts/"+contactId,Contact.class);
+			company.setContactId(0);
+			companyService.addCompany(company);
+		}
 	}
 	
+	@GetMapping("/companies/{id}/stockexchanges")
+	public StockExchangeList getAllStockExchanges(@PathVariable int id) {
+		Set<Integer> stockExchangesId = companyService.getAllStockExchanges(id);
+		List<StockExchange> stockExchangeList1 = new ArrayList<>();
+		restTemplate.getForObject("http://stock-exchange/stockexchanges", StockExchangeList.class).getStockExchangeList()
+		.forEach(t -> {
+			if(stockExchangesId.contains(t.getId())) {
+				stockExchangeList1.add(t);
+			}
+		});
+		StockExchangeList stockExchangeList = new StockExchangeList(stockExchangeList1);
+		return stockExchangeList;
+	}
+	
+	@PostMapping("/companies/{id}/stockexchanges")
+	public void addStockExchange(@RequestBody int stockExchangeId, @PathVariable int id) {
+		companyService.addStockExchange(id, stockExchangeId);
+	}
+	
+	@DeleteMapping("/companies/{id}/stockexchanges/{stockExchangeId}")
+	public void deleteStockExchange(@PathVariable int stockExchangeId, @PathVariable int id) {
+		companyService.deleteStockExchange(id, stockExchangeId);
+	}
 }

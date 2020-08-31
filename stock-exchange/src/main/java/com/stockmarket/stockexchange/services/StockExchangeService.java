@@ -3,7 +3,9 @@ package com.stockmarket.stockexchange.services;
 import com.stockmarket.stockexchange.repositories.StockExchangeRepository;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import com.stockmarket.stockexchange.entities.StockExchange;
 
@@ -17,8 +19,8 @@ public class StockExchangeService {
 
 	
 	public void initialize() {
-		StockExchange nse = new StockExchange(1, "NSE", "National Stock Exchange", "Remark1", 1234),
-		bse = new StockExchange(2, "BSE", "Bombay Stock Exchange", "Remark2", 5678);
+		StockExchange nse = new StockExchange(1, "NSE", "National Stock Exchange", "Remark1", 1234, new HashSet<>()),
+		bse = new StockExchange(2, "BSE", "Bombay Stock Exchange", "Remark2", 5678, new HashSet<>());
 		stockExchangeRepository.save(nse);
 		stockExchangeRepository.save(bse);
 	}
@@ -44,6 +46,26 @@ public class StockExchangeService {
 			stockExchangeRepository.save(stockExchange);
 		}
 		
+	}
+
+	public Set<Integer> getAllCompanies(int id) {
+		return stockExchangeRepository.findById(id).get().getCompaniesId();
+	}
+
+	public void addCompany(int id, int companyId) {
+		StockExchange stockExchange = stockExchangeRepository.findById(id).get(); 
+		Set<Integer> companiesId = stockExchange.getCompaniesId();
+		companiesId.add(companyId);
+		stockExchange.setCompaniesId(companiesId);
+		stockExchangeRepository.save(stockExchange);
+	}
+
+	public void deleteCompany(int id, int companyId) {
+		StockExchange stockExchange = stockExchangeRepository.findById(id).get(); 
+		Set<Integer> companiesId = stockExchange.getCompaniesId();
+		companiesId.remove(companyId);
+		stockExchange.setCompaniesId(companiesId);
+		stockExchangeRepository.save(stockExchange);
 	}
 
 	// Deletion not supported

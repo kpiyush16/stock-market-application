@@ -1,10 +1,9 @@
 package com.example.company.entities;
 
-//import java.util.ArrayList;
 import java.util.HashSet;
-//import java.util.List;
 import java.util.Set;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -18,92 +17,104 @@ import javax.persistence.JoinColumn;
 @Entity
 public class Company {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private String ceo;
-    private String brief;
-    private String code;
-    @Column(unique=true)
-    private String name;
-    private int contactId;
-    
-    @ManyToMany
-    @JoinTable(name = "company_sector", 
-    		joinColumns = {@JoinColumn(name = "company_id")},
-    		inverseJoinColumns = {@JoinColumn(name = "sector_id")}
-    )
-    private Set<Sector> sector = new HashSet<>();
-    
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
 
-    @ElementCollection
-    private Set<String> boardOfDirectors = new HashSet<>();
+	@Column(unique = true, nullable=false)
+	private String name;
 
-    public Company(){
+	private String ceo;
+	private String brief;
+	private String code;
+	private int contactId;
 
-    }
+	@ManyToMany
+	@JoinTable(name = "company_sector", joinColumns = { @JoinColumn(name = "company_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "sector_id") })
+	private Set<Sector> sector = new HashSet<>();
 
-    public Company(int id, String ceo, String brief, String code, String name, int contactId, Set<Sector> sector, Set<String> boardOfDirectors) {
-        super();
-        this.id = id;
-        this.ceo = ceo;
-        this.brief = brief;
-        this.code = code;
-        this.name = name;
-        this.contactId = contactId;
-        this.sector = sector;
-        this.boardOfDirectors = boardOfDirectors;
-    }
+	@ElementCollection
+	@CollectionTable(name = "company_stock_exchanges")
+	Set<Integer> stockExchangesId = new HashSet<>();
 
-    public int getId() {
-        return id;
-    }
+	@ElementCollection
+	private Set<String> boardOfDirectors = new HashSet<>();
 
-    public void setId(int id) {
-        this.id = id;
-    }
+	public Company() {
 
-    public String getCeo() {
-        return ceo;
-    }
+	}
 
-    public void setCeo(String ceo) {
-        this.ceo = ceo;
-    }
+	public Company(int id, String name, String ceo, String brief, String code, int contactId, Set<Sector> sector,
+			Set<Integer> stockExchangesId, Set<String> boardOfDirectors) {
+		super();
+		this.id = id;
+		this.name = name;
+		this.ceo = ceo;
+		this.brief = brief;
+		this.code = code;
+		this.contactId = contactId;
+		this.sector = sector;
+		this.stockExchangesId = stockExchangesId;
+		this.boardOfDirectors = boardOfDirectors;
+	}
 
-    public String getBrief() {
-        return brief;
-    }
+	@Override
+	public String toString() {
+		return "Company [id=" + id + ", name=" + name + ", ceo=" + ceo + ", brief=" + brief + ", code=" + code
+				+ ", contactId=" + contactId + ", sector=" + sector + ", stockExchangesId=" + stockExchangesId
+				+ ", boardOfDirectors=" + boardOfDirectors + "]";
+	}
 
-    public void setBrief(String brief) {
-        this.brief = brief;
-    }
+	public int getId() {
+		return id;
+	}
 
-    public String getCode() {
-        return code;
-    }
+	public void setId(int id) {
+		this.id = id;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getCeo() {
+		return ceo;
+	}
 
-    public int getContactId() {
-        return contactId;
-    }
+	public void setCeo(String ceo) {
+		this.ceo = ceo;
+	}
 
-    public void setContactId(int contactId) {
-        this.contactId = contactId;
-    }
-    
-    public Set<Sector> getSector() {
+	public String getBrief() {
+		return brief;
+	}
+
+	public void setBrief(String brief) {
+		this.brief = brief;
+	}
+
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+
+	public int getContactId() {
+		return contactId;
+	}
+
+	public void setContactId(int contactId) {
+		this.contactId = contactId;
+	}
+
+	public Set<Sector> getSector() {
 		return sector;
 	}
 
@@ -111,12 +122,20 @@ public class Company {
 		this.sector = sector;
 	}
 
-    public Set<String> getBoardOfDirectors() {
-        return boardOfDirectors;
-    }
+	public Set<Integer> getStockExchangesId() {
+		return stockExchangesId;
+	}
+
+	public void setStockExchangesId(Set<Integer> stockExchangesId) {
+		this.stockExchangesId = stockExchangesId;
+	}
+
+	public Set<String> getBoardOfDirectors() {
+		return boardOfDirectors;
+	}
 
 	public void setBoardOfDirectors(Set<String> boardOfDirectors) {
-        this.boardOfDirectors = boardOfDirectors;
-    }
+		this.boardOfDirectors = boardOfDirectors;
+	}
 
 }
