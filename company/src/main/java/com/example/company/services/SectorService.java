@@ -32,7 +32,10 @@ public class SectorService {
     }
 
     public void updateSector(Sector sector, int id) {
-        SectorRepository.save(sector);
+        if(SectorRepository.existsById(id)){
+            sector.setId(id);
+            SectorRepository.save(sector);
+        }
     }
 
     public void deleteSector(int id) {

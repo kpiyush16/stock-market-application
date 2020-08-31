@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
+@RequestMapping("/stockexchanges")
 public class StockExchangeController {
     @Autowired
     private StockExchangeService stockExchangeService;
@@ -24,33 +25,37 @@ public class StockExchangeController {
     @Autowired
     private RestTemplate restTemplate;
 
+	@RequestMapping("/initialize")
+	public void initializeStockExchanges(){
+		stockExchangeService.initialize();
+	}
 
-    @RequestMapping("/stockexchanges")
+    @RequestMapping("")
     public List<StockExchange> getAllStockExchanges() {
         return stockExchangeService.getAllStockExchanges();
     }
 
-    @RequestMapping("/stockexchanges/{id}")
+    @RequestMapping("/{id}")
     public StockExchange getStockExchange(@PathVariable int id) {
         return stockExchangeService.getStockExchange(id);
     }
 
-    @PostMapping("/stockexchanges")
+    @PostMapping("")
 	public void addstockExchange(@RequestBody StockExchange stockExchange) {
 		stockExchangeService.addStockExchange(stockExchange);
 	}
 	
-	@PutMapping("/stockexchanges/{id}")
+	@PutMapping("/{id}")
 	public void updatestockExchange(@RequestBody StockExchange stockExchange, @PathVariable int id) {
 		stockExchangeService.updateStockExchange(stockExchange, id);
     }
 	
-	@GetMapping("/stockexchanges/{id}/contacts/{contactId}")
+	@GetMapping("/{id}/contacts/{contactId}")
 	public Contact getContact(@PathVariable int id, @PathVariable int contactId) {
 		return restTemplate.getForObject("http://user-service/contacts/"+contactId, Contact.class);
 	}
 	
-	@PostMapping("/stockexchanges/{id}/contacts")
+	@PostMapping("/{id}/contacts")
 	public void addContact(@RequestBody Contact contact, @PathVariable int id) {
 		Contact newContact = restTemplate.postForObject("http://user-service/contacts",contact, Contact.class);
 		StockExchange stockExchange = stockExchangeService.getStockExchange(id);
@@ -58,7 +63,7 @@ public class StockExchangeController {
 		stockExchangeService.updateStockExchange(stockExchange, id);
 	}
 	
-	@PutMapping("/stockexchanges/{id}/contacts/{contactId}")
+	@PutMapping("/{id}/contacts/{contactId}")
 	public void updateContact(@RequestBody Contact contact, @PathVariable int id, @PathVariable int contactId) {
 		restTemplate.put("http://user-service/contacts/"+contactId, contact);
 	}

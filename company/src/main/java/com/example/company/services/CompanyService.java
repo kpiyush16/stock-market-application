@@ -33,7 +33,10 @@ public class CompanyService {
     }
 
     public void updateCompany(Company company, int id) {
-        CompanyRepository.save(company);
+        if(CompanyRepository.existsById(id)){
+            company.setId(id);
+            CompanyRepository.save(company);
+        }
     }
 
     public void deleteCompany(int id) {

@@ -31,7 +31,10 @@ public class StockService {
     }
 
     public void updateStock(Stock stock, int id) {
-        stockRepository.save(stock);
+		if(stockRepository.existsById(id)){
+			stock.setId(id);
+			stockRepository.save(stock);
+		}
     }
 
     public void deleteStock(int id) {

@@ -15,13 +15,13 @@ public class StockExchangeService {
     @Autowired
 	private StockExchangeRepository stockExchangeRepository;
 
-//	{
-//		StockExchange nse = new StockExchange(1, "NSE", "National Stock Exchange", 1234), 
-//		bse = new StockExchange(2, "BSE", "Bombay Stock Exchange", 5678);
-//		stockExchangeRepository.save(nse);
-//		stockExchangeRepository.save(bse);
-//	}
 	
+	public void initialize() {
+		StockExchange nse = new StockExchange(1, "NSE", "National Stock Exchange", "Remark1", 1234),
+		bse = new StockExchange(2, "BSE", "Bombay Stock Exchange", "Remark2", 5678);
+		stockExchangeRepository.save(nse);
+		stockExchangeRepository.save(bse);
+	}
 	
 	public List<StockExchange> getAllStockExchanges() {
 		List<StockExchange> stockExchangeList = new ArrayList<>();
@@ -39,8 +39,11 @@ public class StockExchangeService {
 	}
 	
 	public void updateStockExchange(StockExchange stockExchange, int id) {
-		stockExchange.setId(id);
-		stockExchangeRepository.save(stockExchange);
+		if(stockExchangeRepository.existsById(id)){
+			stockExchange.setId(id);
+			stockExchangeRepository.save(stockExchange);
+		}
+		
 	}
 
 	// Deletion not supported

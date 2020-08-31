@@ -17,6 +17,7 @@ public class StockExchange {
     private String remarks;
     private int contactId;
     
+
     public StockExchange() {
     }
 

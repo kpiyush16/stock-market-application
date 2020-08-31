@@ -31,6 +31,7 @@ public class IpoService {
     }
 
     public void updateIpo(Ipo ipo, int id) {
+        ipo.setId(id);
         ipoRepository.save(ipo);
     }
 
