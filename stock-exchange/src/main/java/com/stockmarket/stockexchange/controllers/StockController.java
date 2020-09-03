@@ -1,9 +1,9 @@
 package com.stockmarket.stockexchange.controllers;
 
-import java.util.List;
-
 import com.stockmarket.stockexchange.services.StockService;
 import com.stockmarket.stockexchange.entities.Stock;
+import com.stockmarket.stockexchange.entities.StockList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,8 +19,9 @@ public class StockController {
     private StockService stockService;
 
     @RequestMapping("/stocks")
-    public List<Stock> getAllStocks() {
-        return stockService.getAllStocks();
+    public StockList getAllStocks() {
+        StockList stockList = new StockList(stockService.getAllStocks());
+        return stockList;
     }
 
     @RequestMapping("/stocks/{id}")
@@ -44,17 +45,20 @@ public class StockController {
 	}
 	
 	@RequestMapping("/stocks/stockexchanges/{stockExchangeId}/companies/{companyId}")
-    public List<Stock> getAllStocksByStockExchangeAndCompany(@PathVariable int stockExchangeId, @PathVariable int companyId){
-        return stockService.getStocksByStockExchangeAndCompany(stockExchangeId, companyId);
+    public StockList getAllStocksByStockExchangeAndCompany(@PathVariable int stockExchangeId, @PathVariable int companyId){
+        StockList stockList = new StockList(stockService.getStocksByStockExchangeAndCompany(stockExchangeId, companyId));
+        return stockList;
     }
 	
 	@RequestMapping("/stocks/stockexchanges/{stockExchangeId}")
-    public List<Stock> getAllStocksByStockExchange(@PathVariable int stockExchangeId) {
-        return stockService.getStocksByStockExchange(stockExchangeId);
+    public StockList getAllStocksByStockExchange(@PathVariable int stockExchangeId) {
+        StockList stockList = new StockList(stockService.getStocksByStockExchange(stockExchangeId));
+        return stockList;
     }
 	
 	@RequestMapping("/stocks/companies/{companyId}")
-    public List<Stock> getAllStocksByCompany(@PathVariable int companyId) {
-        return stockService.getStocksByCompany(companyId);
+    public StockList getAllStocksByCompany(@PathVariable int companyId) {
+        StockList stockList = new StockList(stockService.getStocksByCompany(companyId));
+        return stockList;
     }
 }
