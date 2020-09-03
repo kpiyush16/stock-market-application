@@ -1,0 +1,30 @@
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">StockMarket Chart</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a [routerLink]="['home']">Home</a></li>
+            <li><a [routerLink]="['login']">Login</a></li>
+            <li><a [routerLink]="['register']">Registration</a></li>
+        </ul>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>
+
+<!--
+
+<div class="container">
+
+    <h1> SMC Application </h1>
+
+    <a [routerLink]="['home']"> Home </a> |
+    <a [routerLink]="['login']"> Login </a> |
+    <a [routerLink]="['register']"> Registration </a>
+
+
+    <router-outlet></router-outlet>
+
+</div>
+-->
