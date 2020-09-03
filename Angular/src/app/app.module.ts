@@ -6,13 +6,23 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
+import { StockMarketComponent } from './stock-market/stock-market.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { CompanyComponent } from './components/company/company.component';
+import { UserComponent } from './components/user/user.component';
+import { ComparisonComponent } from './components/comparison/comparison.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    StockMarketComponent,
+    DashboardComponent,
+    CompanyComponent,
+    UserComponent,
+    ComparisonComponent
   ],
   imports: [
     BrowserModule,
