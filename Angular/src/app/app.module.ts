@@ -11,6 +11,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CompanyComponent } from './components/company/company.component';
 import { UserComponent } from './components/user/user.component';
 import { ComparisonComponent } from './components/comparison/comparison.component';
+import { IpoManageComponent } from './components/ipo-manage/ipo-manage.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { ComparisonComponent } from './components/comparison/comparison.componen
     DashboardComponent,
     CompanyComponent,
     UserComponent,
-    ComparisonComponent
+    ComparisonComponent,
+    IpoManageComponent
   ],
   imports: [
     BrowserModule,
