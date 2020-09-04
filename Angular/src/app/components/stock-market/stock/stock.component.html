@@ -1,0 +1,101 @@
+<!-- 
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a [routerLink]="['add']">Stock</a></li>
+                <li><a [routerLink]="['a']">Stock Exchange</a></li>
+                <li class="active"><a [routerLink]="['']">Registration</a></li>
+                <li class="active"><a [routerLink]="['stock-market']">Manage Exchange</a></li>
+            </ul>
+        </div>
+    </div>
+</nav> -->
+
+<!-- <div class="p-4">
+    <div class="container">
+        <router-outlet></router-outlet>
+    </div>
+</div> -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+    <ul class="nav navbar-nav">
+        <a (click)="toggleAddMode()">Add Stock   </a>    
+        <a (click)="toggleEditMode()">Edit Stock  </a>
+        <a (click)="toggleImportMode()">Import Stocks (Excel)  </a>
+    </ul>
+    </div>
+</nav>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">ID</th>
+            <th style="width: 30%">companyId</th>
+            <th style="width: 30%">Price</th>
+            <th style="width: 10%">Stock Exchange</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let stock of stockList['stockList']">
+            <td>{{stock.id}}</td>
+            <td>{{stock.companyId}}</td>
+            <td>{{stock.price}}</td>
+            <td *ngIf="stock.stockExchange">{{stock.stockExchange.name}}</td>
+            <td style="white-space: nowrap">
+                <!-- <a routerLink="edit/{{stock.id}}" class="btn btn-sm btn-primary mr-1">Edit</a> -->
+                <!-- <button (click)="deleteStock(stock.id)" class="btn btn-sm btn-danger btn-delete-user">
+                    <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
+                    <span *ngIf="!user.isDeleting">Delete</span>
+                </button> -->
+                <button>Edit</button>
+                <button>Delete</button>
+            </td>
+        </tr>
+    </tbody>
+    <tr *ngIf="!stockList">
+        <td colspan="4" class="text-center">
+            <span class="spinner-border spinner-border-lg align-center"></span>
+        </td>
+    </tr>
+</table>
+<div class="container" *ngIf="isAddMode">
+    <form style="border:thin black solid; padding: 40px;">
+        <div>
+            <div class="form-group col-md-6 ">
+                <label>Stock Exchange</label>
+                <select [(ngModel)]="stock.stockExchange" name="stockExchange">
+                    <option *ngFor="let se of stockExchanges['stockExchangeList']" [ngValue]="se">{{se.name}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6 ">
+                <label>Price</label>
+                <input type="number" [(ngModel)]="stock.price" name="price" />
+            </div>
+            <div class="form-group col-md-6 ">
+                <label>Date</label>
+                <input type="date" [(ngModel)]="stock.date" name="date" />
+            </div>
+            <div class="form-group col-md-6 ">
+                <label>Date Time</label>
+                <input type="datetime-local" [(ngModel)]="stock.dateTime" name="date_time" />
+            </div>
+            <div class="form-group col-md-6 ">
+                <label>Company ID</label>
+                <input type="number" [(ngModel)]="stock.companyId" name="company_id" />
+            </div>
+            <div>
+                <button type="Submit" (click)="addStock()" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div class="container" *ngIf="isEditMode">
+    <p>Edit Mode Works!</p>
+</div>
+<div class="container" *ngIf="isImportMode">
+    <div ng-app="app" ng-controller="sample">
+        <button type="button" class="btn btn-default" file-browser>
+          Browse Excel
+        </button>
+      </div>
+</div>
