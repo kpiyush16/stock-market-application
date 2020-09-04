@@ -31,8 +31,15 @@ public class UserController {
 		return userService.getUser(id);
 //		return user;
 	}
+
+	@RequestMapping("/users/name/{username}")
+	public User getUserByUsername(@PathVariable String username) {
+//		User user = new User(123, 1, "sushant", "password", "user", 9898);
+		return userService.getUserByUsername(username);
+//		return user;
+	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="/users")
+	@RequestMapping(method=RequestMethod.POST, value="/users/register")
 	public void addUser(@RequestBody User user) {
 		userService.addUser(user);
 	}
