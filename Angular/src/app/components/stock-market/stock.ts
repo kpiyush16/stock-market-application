@@ -1,3 +1,5 @@
+import { StockExchange } from "./stock-exchange";
+
 export class Stock {
     id: number;
     price: number;
@@ -5,5 +7,5 @@ export class Stock {
     date: Date;
     dateTime: any;
     companyId: number;
-    stockExchange: string;
+    stockExchange: StockExchange;
 }

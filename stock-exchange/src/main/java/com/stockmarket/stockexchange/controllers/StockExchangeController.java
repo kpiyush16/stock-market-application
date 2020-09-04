@@ -11,6 +11,7 @@ import com.stockmarket.stockexchange.entities.StockExchange;
 import com.stockmarket.stockexchange.entities.StockExchangeList;
 import com.stockmarket.stockexchange.services.StockExchangeService;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +25,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RestController
 @RequestMapping("/stockexchanges")
+@CrossOrigin
 public class StockExchangeController {
 	@Autowired
 	private StockExchangeService stockExchangeService;

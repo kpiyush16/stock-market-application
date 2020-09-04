@@ -3,6 +3,8 @@ import { StockExchangeService } from '../../services/stock-exchange.service'
 import { Stock } from './stock';
 import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
 import { FormGroup } from '@angular/forms';
+import { StockExchange } from './stock-exchange';
+import { StockExchangeList } from "./stock-exchange-list";
 // import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -12,24 +14,36 @@ import { FormGroup } from '@angular/forms';
 })
 export class StockMarketComponent implements OnInit {
 
-  // form: FormGroup;
   id: string;
   isAddMode: boolean = true;
   loading = false;
   submitted = false;
-  stockExchange: any;
+  
   stock: Stock = new Stock();
   response: any;
+  
   registerForm: FormGroup;
+  
   stockUrl: string = "http://localhost:8083/stocks/";
+  stockExchangeUrl: string = "http://localhost:8083/stockexchanges/";
+
+  stockExchanges: StockExchangeList = new StockExchangeList();
 
   private stockService: StockExchangeService;
   constructor(private http: HttpClient) { }
   
+
+  ngOnInit() {
+    this.http.get(this.stockExchangeUrl + "initialize");
+    this.http.get(this.stockExchangeUrl)
+    .subscribe(response => Object.assign(this.stockExchanges, response));
+    console.log(this.stockExchanges)
+  }
+
   toggleMode() {
     this.isAddMode = !this.isAddMode;
   }
-  
+
   addStock(){
     console.log(this.stock);
     this.http.post<Stock>(this.stockUrl, this.stock)
@@ -43,9 +57,6 @@ export class StockMarketComponent implements OnInit {
       this.response = response;
       console.log(this.response);
     });
-  }
-
-  ngOnInit() {
   }
 
   // convenience getter for easy access to form fields
