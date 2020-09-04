@@ -1,43 +1,23 @@
-<div><a (click)="toggleMode()">Import Stocks (Excel) </a></div>
+<!-- <div><a>Import Stocks (Excel) </a></div> -->
 
-<a href="#">Add Exchange </a>
-<a href="#">Edit Exchange </a>
-<a (click)="toggleMode()">Add Stock </a>
-<a (click)="getStocks()">Stocks </a>
-<a href="#">Edit Stock </a>
-
-<div class="container" *ngIf="isAddMode">
-    <form style="border:thin black solid; padding: 40px;">
+<!-- <a href="#">Add Exchange </a>
+<a href="#">Edit Exchange </a> -->
+<!-- <a (click)="toggleMode()">Add Stock </a> -->
+<!-- <a (click)="getStocks()">Stocks </a> -->
+<!-- <a href="#">Edit Stock </a> -->
+<!-- <ui-switch>ABC</ui-switch> -->
+<nav class="navbar navbar-inverse">
+    <div class="container-fluid">
         <div>
-            <div class="form-group col-md-6 ">
-                <label>Stock Exchange</label>
-                <select [(ngModel)]="stock.stockExchange" name="stockExchange">
-                    <option *ngFor="let se of stockExchanges['stockExchangeList']" [ngValue]="se">{{se.name}}</option>
-                </select>
-            </div>
-            <div class="form-group col-md-6 ">
-                <label>Price</label>
-                <input type="number" [(ngModel)]="stock.price" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="form-group col-md-6 ">
-                <label>Company Turnover</label>
-                <input type="number" [(ngModel)]="stock.companyTurnover" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="form-group col-md-6 ">
-                <label>Date</label>
-                <input type="date" [(ngModel)]="stock.date" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="form-group col-md-6 ">
-                <label>Date Time</label>
-                <input type="datetime-local" [(ngModel)]="stock.dateTime" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div class="form-group col-md-6 ">
-                <label>Company ID</label>
-                <input type="number" [(ngModel)]="stock.companyId" [ngModelOptions]="{standalone: true}" />
-            </div>
-            <div>
-                <button type="Submit" (click)="addStock()" class="btn btn-primary">Submit</button>
-            </div>
+            <ul class="nav navbar-nav">
+                <li><a [routerLink]="['stock']">Stock</a></li>
+                <li><a [routerLink]="['stock-exchange']">Stock Exchange</a></li>
+                <!-- <li class="active"><a [routerLink]="['']">Registration</a></li>
+                <li class="active"><a [routerLink]="['stock-market']">Manage Exchange</a></li> -->
+            </ul>
         </div>
-    </form>
-</div>
+    </div>
+</nav>
+<router-outlet></router-outlet>
+
+

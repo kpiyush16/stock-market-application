@@ -1,4 +1,4 @@
-import { StockExchange } from "./stock-exchange";
+import { StockExchange } from "../stock-exchange/stock-exchange";
 
 export class Stock {
     id: number;
