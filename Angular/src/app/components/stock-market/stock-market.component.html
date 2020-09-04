@@ -2,6 +2,7 @@
 <a href="#">Add Exchange  </a>
 <a href="#">Edit Exchange  </a>
 <a (click)="toggleMode()">Add Stock  </a>
+<a (click)="getStocks()">Stocks  </a>
 <a href="#">Edit Stock  </a>
 
 <div class="container" *ngIf="isAddMode" >
@@ -10,37 +11,37 @@
             <div class="form-group col-md-6 ">
                 <label>Stock Exchange</label>
                 <select>
-                    <option>NSE</option>
-                    <option>BSE</option>
+                    <option value="NSE">NSE</option>
+                    <option value="BSE">BSE</option>
                 </select>    
             </div>
             <div class="form-group col-md-6 ">
                 <label>ID</label>
-                <input type="number" [(ngModel)]="stock.id"/>
+                <input type="number" [(ngModel)]="stock.id" [ngModelOptions]="{standalone: true}"/>
             </div>
             <div class="form-group col-md-6 ">
-                <label>Open Price</label>
-                <input type="number" [(ngModel)]="stock.openPrice"/>
+                <label>Price</label>
+                <input type="number" [(ngModel)]="stock.price"  [ngModelOptions]="{standalone: true}"/>
             </div>
-            <div class="form-group col-md-6 ">
+            <!-- <div class="form-group col-md-6 ">
                 <label>Close Price</label>
-                <input type="number" [(ngModel)]="stock.closePrice"/>
-            </div>
+                <input type="number" [(ngModel)]="stock.closePrice" [ngModelOptions]="{standalone: true}"/>
+            </div> -->
             <div class="form-group col-md-6 ">
                 <label>Company Turnover</label>
-                <input type="number" [(ngModel)]="stock.companyTurnover"/>
+                <input type="number" [(ngModel)]="stock.companyTurnover" [ngModelOptions]="{standalone: true}"/>
             </div>
             <div class="form-group col-md-6 ">
                 <label>Date</label>
-                <input type="date" [(ngModel)]="stock.date"/>
+                <input type="date" [(ngModel)]="stock.date" [ngModelOptions]="{standalone: true}"/>
             </div>
             <div class="form-group col-md-6 ">
                 <label>Date Time</label>
-                <input type="datetime-local" [(ngModel)]="stock.dateTime"/>
+                <input type="datetime-local" [(ngModel)]="stock.dateTime" [ngModelOptions]="{standalone: true}"/>
             </div>
             <div class="form-group col-md-6 ">
                 <label>Company ID</label>
-                <input type="number" [(ngModel)]="stock.companyId"/>
+                <input type="number" [(ngModel)]="stock.companyId" [ngModelOptions]="{standalone: true}"/>
             </div>
             <div>
                 <button type="Submit" (click)="addStock()" class="btn btn-primary">Submit</button>

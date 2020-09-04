@@ -17,6 +17,7 @@ public class Stock {
 	private int id;
 
 	private int companyId;
+	private double companyTurnover;
 	private double price;
 	private LocalDate date;
 	private LocalDateTime dateTime;
@@ -27,11 +28,11 @@ public class Stock {
 	public Stock() {
 	}
 
-	public Stock(int id, int companyId, double price, LocalDate date, LocalDateTime dateTime,
-			StockExchange stockExchange) {
-		super();
+
+	public Stock(int id, int companyId, double companyTurnover, double price, LocalDate date, LocalDateTime dateTime, StockExchange stockExchange) {
 		this.id = id;
 		this.companyId = companyId;
+		this.companyTurnover = companyTurnover;
 		this.price = price;
 		this.date = date;
 		this.dateTime = dateTime;
@@ -40,9 +41,17 @@ public class Stock {
 
 	@Override
 	public String toString() {
-		return "Stock [id=" + id + ", companyId=" + companyId + ", price=" + price + ", date=" + date + ", dateTime="
-				+ dateTime + ", stockExchange=" + stockExchange + "]";
+		return "{" +
+			" id='" + getId() + "'" +
+			", companyId='" + getCompanyId() + "'" +
+			", companyTurnover='" + getCompanyTurnover() + "'" +
+			", price='" + getPrice() + "'" +
+			", date='" + getDate() + "'" +
+			", dateTime='" + getDateTime() + "'" +
+			", stockExchange='" + getStockExchange() + "'" +
+			"}";
 	}
+	
 
 	/**
 	 * @return int return the id
@@ -115,5 +124,20 @@ public class Stock {
 	public void setStockExchange(StockExchange stockExchange) {
 		this.stockExchange = stockExchange;
 	}
+
+
+    /**
+     * @return double return the companyTurnover
+     */
+    public double getCompanyTurnover() {
+        return companyTurnover;
+    }
+
+    /**
+     * @param companyTurnover the companyTurnover to set
+     */
+    public void setCompanyTurnover(double companyTurnover) {
+        this.companyTurnover = companyTurnover;
+    }
 
 }

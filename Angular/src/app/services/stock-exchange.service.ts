@@ -7,13 +7,16 @@ import { Stock } from '../components/stock-market/stock'
   providedIn: 'root'
 })
 export class StockExchangeService {
-  constructor() { }
-  private http: HttpClient;
+  constructor(private http: HttpClient) { }
   stockUrl: "http://localhost:8083/stocks/";
 
   addStock(stock: Stock) {
     return this.http.post<Stock>(this.stockUrl, stock);
     // .pipe(catchError(this.handleError('addHero', stock)));
+  }
+
+  getStocks() {
+    return this.http.get(this.stockUrl);
   }
 
   private handleError(error: HttpErrorResponse) {

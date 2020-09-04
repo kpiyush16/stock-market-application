@@ -1,10 +1,9 @@
 export class Stock {
     id: number;
-    closePrice: number;
+    price: number;
     companyTurnover: number;
     date: Date;
     dateTime: any;
-    openPrice: number;
     companyId: number;
     stockExchange: string;
 }

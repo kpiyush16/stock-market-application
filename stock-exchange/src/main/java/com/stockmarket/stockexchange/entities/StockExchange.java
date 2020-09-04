@@ -32,6 +32,11 @@ public class StockExchange {
 	public StockExchange() {
 	}
 
+	public StockExchange(String name) {
+		super();
+		this.name = name;
+	}
+
 	public StockExchange(int id, String name, String brief, String remarks, int contactId, Set<Integer> companiesId) {
 		super();
 		this.id = id;
