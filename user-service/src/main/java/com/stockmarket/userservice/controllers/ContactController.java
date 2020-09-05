@@ -1,6 +1,7 @@
 package com.stockmarket.userservice.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import com.stockmarket.userservice.entities.ContactList;
 import com.stockmarket.userservice.services.ContactService;
 
 @RestController
+@CrossOrigin
 public class ContactController {
 	@Autowired
 	private ContactService contactService;

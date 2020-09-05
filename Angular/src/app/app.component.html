@@ -1,30 +1,42 @@
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">StockMarket</a>
-        </div>
-        <ul class="nav navbar-nav">
-            <li class="active"><a [routerLink]="['home']">Home</a></li>
-            <li><a [routerLink]="['login']">Login</a></li>
-            <li><a [routerLink]="['register']">Registration</a></li>
-            <li><a [routerLink]="['stock-market']">Manage Exchange</a></li>
-        </ul>
+<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+    <div class="navbar-nav">
+        <a class="nav-item nav-link" routerLink="/">Home</a>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a>
+        <div class="username">{{username}}</div>
     </div>
 </nav>
-<router-outlet></router-outlet>
 
-<!--
+<!-- 
+<div class="example-container">
+    <mat-toolbar color="primary" class="example-toolbar">
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <h1 class="example-app-name">Responsive App</h1>
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-sidenav-container">
+      <mat-sidenav #snav [mode]="'side'" fixedTopGap="56">
+        <mat-nav-list>
+          <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>
+        </mat-nav-list>
+      </mat-sidenav>
+  
+      <mat-sidenav-content>
+        <p *ngFor="let content of fillerContent">{{content}}</p>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div> -->
+  
+  
+  <!-- Copyright 2020 Google LLC. All Rights Reserved.
+      Use of this source code is governed by an MIT-style license that
+      can be found in the LICENSE file at http://angular.io/license -->
 
-<div class="container">
-
-    <h1> SMC Application </h1>
-
-    <a [routerLink]="['home']"> Home </a> |
-    <a [routerLink]="['login']"> Login </a> |
-    <a [routerLink]="['register']"> Registration </a>
-
-
-    <router-outlet></router-outlet>
-
+<div class="jumbotron">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2">
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
 </div>
--->

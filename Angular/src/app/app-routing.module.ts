@@ -6,15 +6,15 @@ import { HomeComponent } from './components/home/home.component';
 import { StockMarketComponent } from './components/stock-market/stock-market.component';
 import { StockComponent } from './components/stock-market/stock/stock.component';
 import { StockExchangeComponent } from './components/stock-market/stock-exchange/stock-exchange.component';
-
+import { AuthGuard } from './helper/auth-guard';
 
 const routes: Routes = [
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {
     path: 'stock-market', 
-    component: StockMarketComponent,
+    component: StockMarketComponent, canActivate:[AuthGuard],
     children: [
       {
         path: "stock", 

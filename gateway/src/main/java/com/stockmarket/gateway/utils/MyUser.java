@@ -1,4 +1,4 @@
-package com.stockmarket.gateway.services;
+package com.stockmarket.gateway.utils;
 
 public class MyUser {
 	private int id;
@@ -7,11 +7,12 @@ public class MyUser {
 	private String userType;
 	private int confirmed;
 	private Contact contact;
+	private String Token;
 
 	public MyUser() {
 	}
 
-	public MyUser(int id, String username, String password, String userType, int confirmed, Contact contact) {
+	public MyUser(int id, String username, String password, String userType, int confirmed, Contact contact, String Token) {
 		super();
 		this.id = id;
 		this.username = username;
@@ -19,12 +20,13 @@ public class MyUser {
 		this.userType = userType;
 		this.confirmed = confirmed;
 		this.contact = contact;
+		this.Token = Token;
 	}
 
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", username=" + username + ", password=" + password + ", userType=" + userType
-				+ ", confirmed=" + confirmed + ", contact=" + contact + "]";
+				+ ", confirmed=" + confirmed + ", contact=" + contact + ", Token="+ Token + "]";
 	}
 
 	public int getId() {
@@ -75,4 +77,13 @@ public class MyUser {
 		this.contact = contact;
 	}
 
+	public String getToken() {
+		return Token;
+	}
+
+	public void setToken(String Token) {
+		this.Token = Token;
+	}
+
+	
 }

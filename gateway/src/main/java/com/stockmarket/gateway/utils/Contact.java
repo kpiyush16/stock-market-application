@@ -1,4 +1,4 @@
-package com.stockmarket.gateway.services;
+package com.stockmarket.gateway.utils;
 
 public class Contact {
 	private int id;

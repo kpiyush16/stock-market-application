@@ -1,8 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { UiSwitchModule } from 'ngx-toggle-switch';
+// import { UiSwitchModule } from 'ngx-toggle-switch';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
@@ -21,6 +21,11 @@ import { StockComponent } from './components/stock-market/stock/stock.component'
 import { StockExchangeComponent } from './components/stock-market/stock-exchange/stock-exchange.component';
 import { AddEditComponent } from './components/stock-market/stock/add-edit/add-edit.component';
 import { ListComponent } from './components/stock-market/stock/list/list.component';
+import {JwtInterceptor} from './helper/http-interceptor';
+import {ErrorInterceptor} from './helper/error-interceptor';
+import { AuthenticationService } from './services/authentication.service';
+// import { MatSidenavModule } from '@angular/material/sidenav';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -45,12 +50,19 @@ import { ListComponent } from './components/stock-market/stock/list/list.compone
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    UiSwitchModule
+    // BrowserAnimationsModule,
+    // UiSwitchModule
   ],
+  // exports: [
+  //   MatSidenavModule
+  // ],
   providers: [
     StockExchangeService,
     UserService,
-    CompanyService
+    CompanyService,
+    AuthenticationService,
+    {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
