@@ -1,0 +1,20 @@
+<div class="container">
+    <h1> Company Details </h1>
+
+    <hr/>
+    <div *ngIf="sector">
+        <div>
+            <label><b>ID</b></label> {{sector.id}}
+        </div>
+        <div>
+            <label><b>Name: </b></label> {{sector.name}}
+        </div>
+        <div>
+            <label><b>Brief</b></label> {{sector.brief}}
+        </div>
+    </div>
+
+    <br>
+    <br>
+    <button (click)="list()" class="btn btn-primary">Back to Sector List</button><br>
+</div>

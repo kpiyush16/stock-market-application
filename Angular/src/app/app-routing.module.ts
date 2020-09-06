@@ -7,6 +7,18 @@ import { StockMarketComponent } from './components/stock-market/stock-market.com
 import { StockComponent } from './components/stock-market/stock/stock.component';
 import { StockExchangeComponent } from './components/stock-market/stock-exchange/stock-exchange.component';
 import { AuthGuard } from './helper/auth-guard';
+import { CompanyComponent } from './components/company/company.component';
+import { AddCompanyComponent } from './components/add-company/add-company.component';
+import { UpdateCompanyComponent } from './components/update-company/update-company.component';
+import { ViewCompaniesComponent } from './components/view-companies/view-companies.component';
+import { SectorComponent } from './components/sector/sector.component';
+import { ViewSectorsComponent } from './components/view-sectors/view-sectors.component';
+import { AddSectorComponent } from './components/add-sector/add-sector.component';
+import { UpdateSectorComponent } from './components/update-sector/update-sector.component';
+import { AddCompanySectorComponent } from './components/add-company-sector/add-company-sector.component';
+import { DeleteCompanySectorComponent } from './components/delete-company-sector/delete-company-sector.component';
+import { AddCompanyBodComponent } from './components/add-company-bod/add-company-bod.component';
+import { DeleteCompanyBodComponent } from './components/delete-company-bod/delete-company-bod.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
@@ -28,6 +40,18 @@ const routes: Routes = [
       {path: 'stock-exchange', component: StockExchangeComponent}
     ]
   },
+  {path: 'company/:id', component: CompanyComponent},
+  {path: 'view-companies', component: ViewCompaniesComponent},
+  {path: 'add-company', component: AddCompanyComponent},
+  {path: 'update-company/:id', component: UpdateCompanyComponent},
+  {path: 'sector/:id', component: SectorComponent},
+  {path: 'view-sectors', component: ViewSectorsComponent},
+  {path: 'add-sector', component: AddSectorComponent},
+  {path: 'add-company-sector/:id', component: AddCompanySectorComponent},
+  {path: 'delete-company-sector/:id', component: DeleteCompanySectorComponent},
+  {path: 'update-sector/:id', component: UpdateSectorComponent},
+  {path: 'add-company-bod/:id', component: AddCompanyBodComponent},
+  {path: 'delete-company-bod/:id', component: DeleteCompanyBodComponent},
   {path: '**', pathMatch: 'full',redirectTo: 'home'}
 ];
 

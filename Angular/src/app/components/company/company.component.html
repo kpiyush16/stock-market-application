@@ -1,1 +1,27 @@
-<p>company works!</p>
+<div class="container">
+    <h1> Company Details </h1>
+
+    <hr/>
+    <div *ngIf="company">
+        <div>
+            <label><b>ID</b></label> {{company.id}}
+        </div>
+        <div>
+            <label><b>Name: </b></label> {{company.name}}
+        </div>
+        <div>
+            <label><b>CEO</b></label> {{company.ceo}}
+        </div>
+        <div>
+            <label><b>Brief</b></label> {{company.brief}}
+        </div>
+        <div>
+            <label><b>Code</b></label> {{company.code}}
+        </div>
+
+    </div>
+
+    <br>
+    <br>
+    <button (click)="list()" class="btn btn-primary">Back to Company List</button><br>
+</div>

@@ -1,0 +1,17 @@
+<div class="container">
+    <h3>Remove BOD for your company</h3>
+    <div style="width: 400px;">
+        <form (ngSubmit)="onSubmit()">
+
+            <div class="for3m-group">
+                <label>Select BOD</label>
+                <select [(ngModel)]="companyBod" class="form-control" id="companyBod" name="companyBod" placeholder="Select BOD for company" required #code="ngModel">
+                    <option *ngFor="let sec of company.boardOfDirectors" [ngValue]="sec">{{sec}}</option>
+                </select>
+            </div>
+
+
+            <button type="submit" class="btn btn-success" style="margin-top: 40px;">Submit</button>
+        </form>
+    </div>
+</div>

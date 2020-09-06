@@ -3,9 +3,92 @@
         <div class="navbar-header">
             <a class="navbar-brand" href="#">StockMarket</a>
         </div>
+
         <ul class="nav navbar-nav">
-            <!-- <li class="active"><a [routerLink]="['home']">Home</a></li> -->
             <li><a [routerLink]="['stock-market']">Manage Exchange</a></li>
+
+            <li style="margin-top: 10px;">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                            Manage Company                          
+                        </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class=" dropdown-item " href="# ">
+                            <!-- <a class="dropdown-item " [routerLink]="['add-company'] ">Add new Company</a> -->
+                            <a class="dropdown-item " routerLink="/add-company">Add new Company</a>
+                        </div>
+                        <div class="dropdown-item" href="#">
+                            <!-- <a class="dropdown-item" [routerLink]="['view-companies']">Show All Companies</a> -->
+                            <a class="dropdown-item " routerLink="/view-companies">View Companies</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+
+            <li style="margin-top: 10px;margin-left: 20px;">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                            Manage Sector                          
+                        </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class=" dropdown-item " href="# ">
+                            <!-- <a class="dropdown-item " [routerLink]="['add-sector'] ">Add new Sector</a> -->
+                            <a class="dropdown-item " routerLink="/add-sector">Add new Sector</a>
+                        </div>
+                        <div class="dropdown-item" href="#">
+                            <!-- <a class="dropdown-item" [routerLink]="['view-sectors']">Show All Sectors</a> -->
+                            <a class="dropdown-item " routerLink="/view-sectors">View Sectors</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
         </ul>
     </div>
 </nav>
+
+<!-- <nav class="navbar navbar-inverse">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">StockMarket Chart</a>
+        </div>
+        <ul class="nav navbar-nav">
+            <li class="active"><a [routerLink]="['home']">Home</a></li>
+            <li><a [routerLink]="['login']">Login</a></li>
+            <li><a [routerLink]="['register']">Registration</a></li>
+            <li style="margin-top: 10px;">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
+                            Manage Company                          
+                        </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <div class=" dropdown-item " href="# ">
+                            <a class="dropdown-item " routerLink="/add-company">Add new Company</a>
+                        </div>
+                    <div class="dropdown-item " href="# ">
+                        <a class="dropdown-item " [routerLink]="[ 'view-companies '] ">Show All Companies</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+
+    <li style="margin-top: 10px;margin-left: 20px; ">
+        <div class="dropdown ">
+            <button class="btn btn-secondary dropdown-toggle " type="button " id="dropdownMenuButton " data-toggle="dropdown ">
+                                Manage Sector                          
+                            </button>
+            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton ">
+                <div class=" dropdown-item " href="# ">
+                    <a class="dropdown-item " [routerLink]="[ 'add-sector '] ">Add new Sector</a>
+                </div>
+                <div class="dropdown-item " href="# ">
+                    <a class="dropdown-item " [routerLink]="[ 'view-sectors '] ">Show All Sectors</a>
+                </div>
+            </div>
+        </div>
+    </li>
+
+</ul>
+</div>
+</nav> -->
+
+<router-outlet></router-outlet>

@@ -24,6 +24,17 @@ import { ListComponent } from './components/stock-market/stock/list/list.compone
 import {JwtInterceptor} from './helper/http-interceptor';
 import {ErrorInterceptor} from './helper/error-interceptor';
 import { AuthenticationService } from './services/authentication.service';
+import { AddCompanyComponent } from './components/add-company/add-company.component';
+import { UpdateCompanyComponent } from './components/update-company/update-company.component';
+import { ViewCompaniesComponent } from './components/view-companies/view-companies.component';
+import { ViewSectorsComponent } from './components/view-sectors/view-sectors.component';
+import { AddSectorComponent } from './components/add-sector/add-sector.component';
+import { SectorComponent } from './components/sector/sector.component';
+import { UpdateSectorComponent } from './components/update-sector/update-sector.component';
+import { AddCompanySectorComponent } from './components/add-company-sector/add-company-sector.component';
+import { DeleteCompanySectorComponent } from './components/delete-company-sector/delete-company-sector.component';
+import { AddCompanyBodComponent } from './components/add-company-bod/add-company-bod.component';
+import { DeleteCompanyBodComponent } from './components/delete-company-bod/delete-company-bod.component';
 // import { MatSidenavModule } from '@angular/material/sidenav';
 // import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -43,13 +54,24 @@ import { AuthenticationService } from './services/authentication.service';
     StockExchangeComponent,
     AddEditComponent,
     ListComponent,
+    AddCompanyComponent,
+    UpdateCompanyComponent,
+    ViewCompaniesComponent,
+    ViewSectorsComponent,
+    AddSectorComponent,
+    SectorComponent,
+    UpdateSectorComponent,
+    AddCompanySectorComponent,
+    DeleteCompanySectorComponent,
+    AddCompanyBodComponent,
+    DeleteCompanyBodComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FormsModule,
+    FormsModule
     // BrowserAnimationsModule,
     // UiSwitchModule
   ],

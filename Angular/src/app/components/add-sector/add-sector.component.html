@@ -1,0 +1,26 @@
+<div class="container">
+    <h1> Add New Sector </h1>
+
+    <div class="card my-5">
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+                <!-- <div class="form-group">
+                    <label for="id">Id</label>
+                    <input type="number" [(ngModel)]="sector.id" class="form-control" id="id" name="id" placeholder="Enter sector Id" required #id="ngModel">
+                </div> -->
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" [(ngModel)]="sector.name" class="form-control" id="name" name="name" placeholder="Enter sector name" required #name="ngModel">
+                </div>
+                <!-- <div [hidden]="!name.pristine" class="alert alert-danger">Name is required</div> -->
+                <div class="form-group">
+                    <label for="Brief">Brief</label>
+                    <input type="text" [(ngModel)]="sector.brief" class="form-control" id="brief" name="brief" placeholder="Enter brief about sector" required #brief="ngModel">
+                </div>
+                <!-- <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div> -->
+
+                <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

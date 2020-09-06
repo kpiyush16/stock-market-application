@@ -1,0 +1,50 @@
+<div class="container">
+    <h1> Companies List </h1>
+
+    <div class=" card my-5 ">
+        <div class="card-body ">
+            <table class="table table-bordered table-striped ">
+                <thead>
+                    <tr>
+                        <!-- <th scope="col ">Company Id</th> -->
+                        <th scope="col ">Company Name</th>
+                        <th scope="col ">CEO</th>
+                        <th scope="col ">Brief</th>
+                        <th scope="col ">Code</th>
+                        <th scope="col ">Sectors</th>
+                        <th scope="col ">BOD</th>
+                        <th scope="col ">Add/Remove Sector</th>
+                        <th scope="col ">Add/Remove Board Of Directors</th>
+                        <th scope="col ">Add/Remove/Update Company</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let company of ListofCompanies ">
+                        <!-- <td>{{ company.id }}</td> -->
+                        <td>{{ company.name }}</td>
+                        <td>{{ company.ceo }}</td>
+                        <td>{{ company.brief }}</td>
+                        <td>{{ company.code }}</td>
+                        <td>
+                            <span *ngFor="let sec of company.sector; let l=count ">{{sec.name }} </span>
+                        </td>
+                        <td>
+                            <span *ngFor="let bod of company.boardOfDirectors; let l=count ">{{bod}} </span>
+                        </td>
+                        <td><button (click)="AddCompanySector(company.id) " class="btn btn-info ">Add Sector</button>
+                            <button (click)="DeleteCompanySector(company.id) " class="btn btn-danger " style="margin-left: 10px ">Delete Sector</button>
+                        </td>
+                        <td><button (click)="AddCompanyBOD(company.id) " class="btn btn-info ">Add BOD</button>
+                            <button (click)="DeleteCompanyBOD(company.id) " class="btn btn-danger " style="margin-left: 10px ">Remove BOD</button>
+                        </td>
+                        <td><button (click)="deleteCompany(company.id) " class="btn btn-danger ">Delete</button>
+                            <button (click)="companyDetails(company.id) " class="btn btn-info " style="margin-left: 10px ">Details</button>
+                            <button (click)="updateCompany(company.id) " class="btn btn-warning " style="margin-left: 10px ">Update</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

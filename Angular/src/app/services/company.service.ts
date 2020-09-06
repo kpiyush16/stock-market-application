@@ -1,9 +1,59 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { CompanyModel } from '../models/company-model';
+import { CompanyBod } from '../models/company-bod'
+import { Sector } from '../models/sector'
+import { Observable} from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyService {
 
-  constructor() { }
+  private companyUrl: string;
+ 
+  constructor(private http: HttpClient) {
+    //this.companyUrl = 'http://localhost:8989/company/companies';
+    this.companyUrl = 'http://localhost:8082/companies';
+  }
+ 
+  //array1: Array<CompanyModel>;
+
+  public findAll(): Observable<CompanyModel[]> {
+    return this.http.get<CompanyModel[]>(this.companyUrl);
+  }
+
+  public save(company: CompanyModel) {
+    return this.http.post<CompanyModel>(this.companyUrl, company);
+  }
+
+  deleteCompany(id: number): Observable<any> {
+    return this.http.delete(`${this.companyUrl}/${id}`, { responseType: 'text' });
+  }
+
+  AddCompanySector(id: number, sector: Sector): Observable<any> {
+    return this.http.post<Sector>(`${this.companyUrl}/${id}/${'sectors'}`, sector);
+  }
+
+  DeleteCompanySector(id: number, id1: number): Observable<any> {
+    return this.http.delete(`${this.companyUrl}/${id}/${'sectors'}/${id1}/`, { responseType: 'text' });
+  }
+
+  AddCompanyBOD(id: number, company: CompanyBod): Observable<any> {
+    return this.http.post<CompanyBod>(`${this.companyUrl}/${id}/${'boardofdirectors'}`, company);
+  }
+
+  DeleteCompanyBOD(id: number, company: CompanyBod): Observable<any> {
+    return this.http.delete(`${this.companyUrl}/${id}/${'boardofdirectors'}/${company}`, { responseType: 'text' });
+  }
+
+  getCompany(id: number): Observable<any> {
+    return this.http.get(`${this.companyUrl}/${id}`);
+  }
+
+  updateCompany(id: number, value: any): Observable<Object> {
+    return this.http.put(`${this.companyUrl}/${id}`, value);
+  }
+
 }

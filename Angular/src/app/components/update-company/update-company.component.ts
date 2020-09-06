@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { CompanyService } from '../../services/company.service';
 import { CompanyModel } from '../../models/company-model'
-import { ViewCompaniesComponent} from "../../components/view-companies/view-companies.component"
+
 
 @Component({
-  selector: 'app-company',
-  templateUrl: './company.component.html',
-  styleUrls: ['./company.component.scss']
+  selector: 'app-update-company',
+  templateUrl: './update-company.component.html',
+  styleUrls: ['./update-company.component.scss']
 })
-export class CompanyComponent implements OnInit {
+export class UpdateCompanyComponent implements OnInit {
 
   id: number;
   company: CompanyModel;
@@ -17,8 +17,7 @@ export class CompanyComponent implements OnInit {
   constructor(private route: ActivatedRoute,private router: Router,
     private companyService: CompanyService) { }
 
-  ngOnInit() {
-
+  ngOnInit(){
     this.company = new CompanyModel();
 
     this.id = this.route.snapshot.params['id'];
@@ -30,8 +29,21 @@ export class CompanyComponent implements OnInit {
       }, error => console.log(error));
   }
 
-  list(){
-    this.router.navigate(['view-companies']);
+  updateCompany() {
+    this.companyService.updateCompany(this.id, this.company)
+      .subscribe(data => {
+        console.log(data);
+        this.company = new CompanyModel();
+        this.gotoList();
+      }, error => console.log(error));
   }
-}
 
+  onSubmit() {
+    this.updateCompany();    
+  }
+
+  gotoList() {
+    this.router.navigate(['/view-companies']);
+  }
+
+}
