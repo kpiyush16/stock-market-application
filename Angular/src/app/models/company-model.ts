@@ -7,5 +7,5 @@ export class CompanyModel {
     code: String;
     sector: [];
     boardOfDirectors: [];
-    //stockExchangesId: [];
+    stockExchangesId: [];
 }

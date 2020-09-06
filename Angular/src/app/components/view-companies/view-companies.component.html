@@ -14,6 +14,7 @@
                         <th scope="col ">Sectors</th>
                         <th scope="col ">BOD</th>
                         <th scope="col ">Add/Remove Sector</th>
+                        <th scope="col ">View Company Stock-Exchange</th>
                         <th scope="col ">Add/Remove Board Of Directors</th>
                         <th scope="col ">Add/Remove/Update Company</th>
                     </tr>
@@ -33,6 +34,8 @@
                         </td>
                         <td><button (click)="AddCompanySector(company.id) " class="btn btn-info ">Add Sector</button>
                             <button (click)="DeleteCompanySector(company.id) " class="btn btn-danger " style="margin-left: 10px ">Delete Sector</button>
+                        </td>
+                        <td><button (click)="ViewCompanyStockExchange(company.id) " class="btn btn-info ">View Company Stock-Exchange</button>
                         </td>
                         <td><button (click)="AddCompanyBOD(company.id) " class="btn btn-info ">Add BOD</button>
                             <button (click)="DeleteCompanyBOD(company.id) " class="btn btn-danger " style="margin-left: 10px ">Remove BOD</button>

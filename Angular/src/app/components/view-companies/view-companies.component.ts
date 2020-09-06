@@ -71,5 +71,9 @@ DeleteCompanyBOD(id: number){
   this.router.navigate(['delete-company-bod', id]);
 }
 
+ViewCompanyStockExchange(id: number){
+  this.router.navigate(['view-company-stock-exchange', id]);
+}
+
 
 }

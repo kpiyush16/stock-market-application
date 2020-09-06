@@ -19,6 +19,9 @@ import { AddCompanySectorComponent } from './components/add-company-sector/add-c
 import { DeleteCompanySectorComponent } from './components/delete-company-sector/delete-company-sector.component';
 import { AddCompanyBodComponent } from './components/add-company-bod/add-company-bod.component';
 import { DeleteCompanyBodComponent } from './components/delete-company-bod/delete-company-bod.component';
+import { ViewCompanyStockExchangeComponent } from './components/view-company-stock-exchange/view-company-stock-exchange.component';
+import { AddCompanyStockExchangeComponent } from './components/add-company-stock-exchange/add-company-stock-exchange.component';
+import { DeleteCompanyStockExchangeComponent } from './components/delete-company-stock-exchange/delete-company-stock-exchange.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
@@ -52,6 +55,9 @@ const routes: Routes = [
   {path: 'update-sector/:id', component: UpdateSectorComponent},
   {path: 'add-company-bod/:id', component: AddCompanyBodComponent},
   {path: 'delete-company-bod/:id', component: DeleteCompanyBodComponent},
+  {path: 'view-company-stock-exchange/:id', component: ViewCompanyStockExchangeComponent},
+  {path: 'add-company-stock-exchange/:id', component: AddCompanyStockExchangeComponent},
+  {path: 'delete-company-stock-exchange/:id', component: DeleteCompanyStockExchangeComponent},
   {path: '**', pathMatch: 'full',redirectTo: 'home'}
 ];
 

@@ -4,6 +4,7 @@ import { CompanyModel } from '../models/company-model';
 import { CompanyBod } from '../models/company-bod'
 import { Sector } from '../models/sector'
 import { Observable} from 'rxjs';
+import { StockExchange } from '../models/stock-exchange'
 
 
 @Injectable({
@@ -12,16 +13,26 @@ import { Observable} from 'rxjs';
 export class CompanyService {
 
   private companyUrl: string;
+  private seUrl: string;
  
   constructor(private http: HttpClient) {
     //this.companyUrl = 'http://localhost:8989/company/companies';
     this.companyUrl = 'http://localhost:8082/companies';
+    this.seUrl = 'http://localhost:8083/stockexchanges';
   }
  
   //array1: Array<CompanyModel>;
 
   public findAll(): Observable<CompanyModel[]> {
     return this.http.get<CompanyModel[]>(this.companyUrl);
+  }
+
+  public findAll1(id: number): Observable<StockExchange[]> {
+    return this.http.get<StockExchange[]>(`${this.companyUrl}/${id}/${'stockexchanges'}`);
+  }
+
+  public findAll2(): Observable<StockExchange[]> {
+    return this.http.get<StockExchange[]>(this.seUrl);
   }
 
   public save(company: CompanyModel) {
@@ -46,6 +57,14 @@ export class CompanyService {
 
   DeleteCompanyBOD(id: number, company: CompanyBod): Observable<any> {
     return this.http.delete(`${this.companyUrl}/${id}/${'boardofdirectors'}/${company}`, { responseType: 'text' });
+  }
+
+  AddCompanyStockExchange( id: number, id1: number): Observable<any> {
+    return this.http.post<StockExchange>(`${this.companyUrl}/${id}/${'stockexchanges'}`, id1);
+  }
+
+  DeleteCompanyStockExchange(id: number, id1: number): Observable<any> {
+    return this.http.delete(`${this.companyUrl}/${id}/${'stockexchanges'}/${id1}/`, { responseType: 'text' });
   }
 
   getCompany(id: number): Observable<any> {

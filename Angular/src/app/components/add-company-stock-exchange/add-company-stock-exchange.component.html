@@ -1,0 +1,21 @@
+<div class="container">
+    <h3>Add Company-Sector</h3>
+    <div style="width: 400px;">
+        <form (ngSubmit)="onSubmit()">
+            <!-- <div class="form-group ">
+                <label for="sector ">Sector </label>
+                <input type="text " class="form-control " id="sector " required [(ngModel)]="company.sector" name="sector">
+            </div> -->
+
+            <div class="for3m-group">
+                <label>Select Stock-Exchange</label>
+                <select [(ngModel)]="se" class="form-control" id="se" name="se" placeholder="Select SE for your company" required #code="ngModel">
+                    <option *ngFor="let se1 of ListofSe" [ngValue]="se1">{{se1.name}}</option>
+                </select>
+            </div>
+
+
+            <button type="submit" class="btn btn-success" style="margin-top: 40px;">Submit</button>
+        </form>
+    </div>
+</div>

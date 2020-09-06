@@ -45,9 +45,9 @@ export class DeleteCompanySectorComponent implements OnInit {
     //  }
 
     DeleteCompanySector() {
-      console.log(this.sector.name);
-      console.log(this.sector.id);
-      console.log(this.id);
+      // console.log(this.sector.name);
+      // console.log(this.sector.id);
+      // console.log(this.id);
       this.companyService.DeleteCompanySector(this.id, this.sector.id)
         .subscribe(data => {
           console.log(data);
