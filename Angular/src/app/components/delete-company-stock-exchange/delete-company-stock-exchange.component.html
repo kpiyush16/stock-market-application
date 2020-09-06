@@ -1,0 +1,17 @@
+<div class="container">
+    <h3>Remove Stock from your company</h3>
+    <div style="width: 400px;">
+        <form (ngSubmit)="onSubmit()">
+
+            <div class="for3m-group">
+                <label>Select Stock</label>
+                <select [(ngModel)]="se" class="form-control" id="se" name="se" placeholder="Select stock from your company" required #code="ngModel">
+                    <option *ngFor="let se1 of ListofSe " [ngValue]="se1"> {{se1.name}} </option>
+                </select>
+            </div>
+
+
+            <button type="submit" class="btn btn-success" style="margin-top: 40px;">Submit</button>
+        </form>
+    </div>
+</div>

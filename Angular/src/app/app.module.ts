@@ -32,6 +32,22 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditContactComponent } from './components/edit-contact/edit-contact.component';
+import { AddCompanyComponent } from './components/add-company/add-company.component';
+import { UpdateCompanyComponent } from './components/update-company/update-company.component';
+import { ViewCompaniesComponent } from './components/view-companies/view-companies.component';
+import { ViewSectorsComponent } from './components/view-sectors/view-sectors.component';
+import { AddSectorComponent } from './components/add-sector/add-sector.component';
+import { SectorComponent } from './components/sector/sector.component';
+import { UpdateSectorComponent } from './components/update-sector/update-sector.component';
+import { AddCompanySectorComponent } from './components/add-company-sector/add-company-sector.component';
+import { DeleteCompanySectorComponent } from './components/delete-company-sector/delete-company-sector.component';
+import { AddCompanyBodComponent } from './components/add-company-bod/add-company-bod.component';
+import { DeleteCompanyBodComponent } from './components/delete-company-bod/delete-company-bod.component';
+import { ViewCompanyStockExchangeComponent } from './components/view-company-stock-exchange/view-company-stock-exchange.component';
+import { AddCompanyStockExchangeComponent } from './components/add-company-stock-exchange/add-company-stock-exchange.component';
+import { DeleteCompanyStockExchangeComponent } from './components/delete-company-stock-exchange/delete-company-stock-exchange.component';
+import { SuperCompanyComponent } from './components/super-company/super-company.component';
+
 
 @NgModule({
   declarations: [
@@ -51,6 +67,21 @@ import { EditContactComponent } from './components/edit-contact/edit-contact.com
     ListComponent,
     ProfileComponent,
     EditContactComponent,
+    AddCompanyComponent,
+    UpdateCompanyComponent,
+    ViewCompaniesComponent,
+    ViewSectorsComponent,
+    AddSectorComponent,
+    SectorComponent,
+    UpdateSectorComponent,
+    AddCompanySectorComponent,
+    DeleteCompanySectorComponent,
+    AddCompanyBodComponent,
+    DeleteCompanyBodComponent,
+    ViewCompanyStockExchangeComponent,
+    AddCompanyStockExchangeComponent,
+    DeleteCompanyStockExchangeComponent,
+    SuperCompanyComponent
   ],
   imports: [
     BrowserModule,

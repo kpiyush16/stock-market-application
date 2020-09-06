@@ -1,0 +1,36 @@
+<div class="container">
+    <h2> Stock-Exchanges for Company </h2>
+
+    <button (click)="AddCompanyStockExchange(company.id) " class="btn btn-info " style="margin: 20px">Add Stock-exchange</button>
+    <button (click)="DeleteCompanyStockExchange(company.id) " class="btn btn-danger " style="margin: 20px">Delete Stock--exchange</button>
+
+    <div class=" card my-5 ">
+        <div class="card-body ">
+            <table class="table table-bordered table-striped ">
+                <thead>
+                    <tr>
+                        <!-- <th scope="col ">Company Id</th> -->
+                        <th scope="col ">Company Name</th>
+                        <th scope="col ">Brief</th>
+                        <th scope="col ">Remarks</th>
+                        <th scope="col ">Contact-ID</th>
+                        <!-- <th scope="col ">Add/Remove Stock-Exchange</th> -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let se of ListofSe ">
+                        <!-- <td>{{ company.id }}</td> -->
+                        <td>{{ se.name }}</td>
+                        <td>{{ se.brief }}</td>
+                        <td>{{ se.remarks }}</td>
+                        <td>{{ se.contactId }}</td>
+                        <!-- <td><button (click)="AddCompanyStockExchange(company.id) " class="btn btn-info ">Add Stock-exchange</button>
+                            <button (click)="DeleteCompanyStockExchange(company.id) " class="btn btn-danger " style="margin-left: 10px ">Delete Stock--exchange</button>
+                        </td> -->
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

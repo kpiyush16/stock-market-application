@@ -1,0 +1,30 @@
+<div class="container">
+    <h1> Sectors List </h1>
+
+    <div class=" card my-5 ">
+        <div class="card-body ">
+            <table class="table table-bordered table-striped ">
+                <thead>
+                    <tr>
+                        <!-- <th scope="col ">Sector Id</th> -->
+                        <th scope="col ">Sector Name</th>
+                        <th scope="col ">Brief</th>
+                        <th scope="col ">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let sector of ListofSectors ">
+                        <!-- <td>{{ sector.id }}</td> -->
+                        <td>{{ sector.name }}</td>
+                        <td>{{ sector.brief }}</td>
+                        <td><button (click)="deleteSector(sector.id)" class="btn btn-danger">Delete</button>
+                            <button (click)="sectorDetails(sector.id)" class="btn btn-info" style="margin-left: 10px">Details</button>
+                            <button (click)="updateSector(sector.id)" class="btn btn-warning" style="margin-left: 10px">Update</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
+</div>

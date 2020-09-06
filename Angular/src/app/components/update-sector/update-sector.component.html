@@ -1,0 +1,22 @@
+<div class="container">
+    <h3>Update Sector</h3>
+    <div style="width: 400px;">
+        <form (ngSubmit)="onSubmit()">
+            <!-- <div class="form-group">
+                <label for="name">ID </label>
+                <input type="number" class="form-control" id="id" required [(ngModel)]="sector.id" name="id">
+            </div> -->
+            <div class="form-group">
+                <label for="name"> Name </label>
+                <input type="text" class="form-control" id="name" required [(ngModel)]=" sector.name " name="name ">
+            </div>
+
+            <div class="form-group ">
+                <label for="name ">Brief </label>
+                <input type="text " class="form-control " id="brief " required [(ngModel)]="sector.brief " name="brief ">
+            </div>
+
+            <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+    </div>
+</div>
