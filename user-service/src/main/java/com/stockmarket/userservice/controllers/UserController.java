@@ -42,8 +42,13 @@ public class UserController {
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/users/register")
-	public void addUser(@RequestBody User user) {
-		userService.addUser(user);
+	public void addUser(@RequestBody User user) throws Exception {
+		try {
+			userService.addUser(user);
+		} catch (Exception e) {
+			throw new Exception("Email ID or username already exists!");
+		}
+		
 	}
 	
 	@RequestMapping(method=RequestMethod.PUT, value="/users/{id}")

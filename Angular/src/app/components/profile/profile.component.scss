@@ -1,0 +1,51 @@
+div.profile{
+    margin-left:40px;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+}
+
+
+mat-icon.user_icon{
+    width: 10rem;
+    height: 10rem;
+    font-size: 10rem;
+    color: gray;
+}
+
+div.field{
+    display:flex;
+    margin-bottom: 10px;
+    margin-left:20px;
+}
+
+div.field-key{
+    font-size: 20px;
+    // font-style: ;
+    // display:flex;
+    margin-right:5px;
+    font-weight: bold;
+}
+
+div.field-value{
+    font-size: 20px;
+    // display:flex;
+}
+
+div.title{
+    display:flex;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    // margin-left: 10px;
+}
+
+div.title-key{
+    font-size: 25px;
+    margin-right: 40px;
+    text-decoration: underline;
+}
+
+a.contact-edit{
+    font-size: 20px;
+    text-decoration: none;
+}

@@ -6,3 +6,101 @@ div.username{
 a.nav-link{
     margin-right: 10px;
 }
+
+div.side-nav-item{
+    margin-right: 20px;
+    // align-content: baseline;
+}
+
+a.side-nav-item-link{
+    font-size:20px;
+    margin-left: 20px;
+    text-decoration: none;
+    // margin-bottom: 10px;
+    // margin-top: -50px;
+    // padding-top:-10px;
+    // padding-bottom: 20px;
+    
+}
+
+mat-icon.side-nav-item-icon{
+    // padding-top: 10px;
+    margin-right: 10px;
+    // margin-top: 10px;
+    // margin-bottom: -10px;
+    // padding-bottom: -10px;
+    // width: 1px;
+    // height: 1px;
+    // font-size: 1px;
+}
+
+a.username{
+    float:right;
+}
+
+.mat-toolbar{
+    background: rgb(58, 74, 253);
+    color: white;
+}
+
+.mat-list-item{
+    color: white;
+}
+
+.menu-icon{
+    padding-top: 10px;
+    // padding-left: 10px;
+    margin-right: 5px;
+    margin-left: 5px;
+    // margin-bottom: 10px;
+    color:white;
+}
+
+button.side-nav-button{
+    background:rgb(58, 74, 253);
+    margin-bottom: -15px;
+    border-color: rgb(58, 74, 253);
+    border:none;
+    outline:none;
+    // height:10pt;
+    // width:10pt;
+    // color:yellow;
+}
+
+p.mat-list-item{
+    // align-content: right;
+    margin-block-start: 10px;
+    color:white;
+}
+
+mat-sidenav-container{
+    background: white;
+    color: black;
+}
+
+mat-sidenav{
+    background: rgb(58, 74, 253);
+}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+  
+h1.app-name {
+margin-left: 20px;
+// margin-bottom: 20px;
+}
+  
+.example-sidenav-container {
+//     /* When the sidenav is not fixed, stretch the sidenav container to fill the available space. This
+//        causes `<mat-sidenav-content>` to act as our scrolling element for desktop layouts. */
+    flex: 1;
+  }
+  
+  

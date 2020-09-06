@@ -1,42 +1,104 @@
-<nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
+<!-- <nav class="navbar navbar-expand navbar-dark bg-dark" *ngIf="currentUser">
     <div class="navbar-nav">
         <a class="nav-item nav-link" routerLink="/">Home</a>
-        <a class="nav-item nav-link" (click)="logout()">Logout</a>
-        <div class="username">{{username}}</div>
+        <a class="nav-item nav-link" (click)="logout()">Logout</a> -->
+        <!-- <a class="nav-item nav-link username" >{{username}}</a> -->
+        <!-- <button mat-button [matMenuTriggerFor]="menu">{{username}}</button> -->
+        <!-- #enddocregion mat-menu-trigger-for -->
+        <!-- <mat-menu #menu="matMenu">
+        <button mat-menu-item >Profile</button>
+        <button mat-menu-item (click)="logout()">Logout</button>
+        </mat-menu>
     </div>
-</nav>
+</nav> -->
 
-<!-- 
-<div class="example-container">
-    <mat-toolbar color="primary" class="example-toolbar">
-      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-      <h1 class="example-app-name">Responsive App</h1>
+
+<div class="example-container" *ngIf="currentUser; else elseBlock">
+    <mat-toolbar class="example-toolbar">
+      <button mat-icon-button class="side-nav-button" (click)="snav.toggle()"><mat-icon class="menu-icon">menu</mat-icon></button>
+      <h1 class="app-name">Stock Market App</h1>
     </mat-toolbar>
   
     <mat-sidenav-container class="example-sidenav-container">
       <mat-sidenav #snav [mode]="'side'" fixedTopGap="56">
         <mat-nav-list>
-          <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>
+            <!-- <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button> -->
+            <!-- <p mat-list-item >{{username}}</p> -->
+            <br>
+            <div mat-list-item class="side-nav-item">
+                <a [routerLink]="['profile']" class="side-nav-item-link">
+                    <mat-icon aria-hidden="false" aria-label="side-nav-item-icon">person</mat-icon>
+                    {{username}}
+                </a>
+            </div>
+            <br>
+            <div mat-list-item class="side-nav-item">
+                <a [routerLink]="['home']" class="side-nav-item-link">
+                    <mat-icon aria-hidden="false" aria-label="side-nav-item-icon">home</mat-icon>
+                    Home
+                </a>
+            </div>
+            <br>
+            <div mat-list-item class="side-nav-item">
+                <a [routerLink]="['home']" class="side-nav-item-link">
+                    <mat-icon aria-hidden="false" aria-label="side-nav-item-icon">business_center</mat-icon>
+                    Company
+                </a>
+            </div>
+            <br>
+            <div mat-list-item class="side-nav-item">
+                <a [routerLink]="['stock-market']" class="side-nav-item-link">
+                    <mat-icon aria-hidden="false" aria-label="side-nav-item-icon">timeline</mat-icon>
+                    Stock Market
+                </a>
+            </div>
+            <br>
+            <div mat-list-item class="side-nav-item">
+                <a (click)="logout()" class="side-nav-item-link">
+                    <mat-icon aria-hidden="false" aria-label="side-nav-item-icon">logout</mat-icon>
+                    Logout
+                </a>
+            </div>
+            <!-- <button mat-list-item (click)="logout()">Logout</button> -->
+            <!-- <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a> -->
         </mat-nav-list>
       </mat-sidenav>
   
       <mat-sidenav-content>
-        <p *ngFor="let content of fillerContent">{{content}}</p>
+          <!-- tgbwsefnkeafnkeajnf -->
+        {{hell}}
+        <!-- <p *ngFor="let content of fillerContent">{{content}}</p> -->
+        <router-outlet></router-outlet>
       </mat-sidenav-content>
     </mat-sidenav-container>
-  </div> -->
+  </div>
   
   
   <!-- Copyright 2020 Google LLC. All Rights Reserved.
       Use of this source code is governed by an MIT-style license that
       can be found in the LICENSE file at http://angular.io/license -->
+  
+<!-- <nav class="navbar navbar-inverse" *ngIf="currentUser">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">StockMarket</a>
+        </div>
+        <ul class="nav navbar-nav"> -->
+            <!-- <li class="active"><a [routerLink]="['home']">Home</a></li> -->
+            <!-- <li><a [routerLink]="['stock-market']">Manage Exchange</a></li>
+        </ul>
+    </div>
+</nav> -->
 
-<div class="jumbotron">
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-8 offset-sm-2">
-                <router-outlet></router-outlet>
+
+<ng-template #elseBlock>
+    <div class="jumbotron">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8 offset-sm-2">
+                    <router-outlet></router-outlet>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</ng-template>

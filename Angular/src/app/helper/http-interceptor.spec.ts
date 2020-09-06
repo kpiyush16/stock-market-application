@@ -1,4 +1,4 @@
-import { HttpInterceptor } from './http-interceptor';
+import { JwtInterceptor } from './http-interceptor';
 
 describe('HttpInterceptor', () => {
   it('should create an instance', () => {

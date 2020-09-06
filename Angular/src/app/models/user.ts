@@ -7,4 +7,5 @@ export class User {
     userType:string;
     confirmed:number;
     contact:Contact;
+    token:string;
 }

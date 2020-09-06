@@ -1,0 +1,38 @@
+<div class="profile">
+    <mat-icon class="user_icon">account_circle</mat-icon>
+    <div class="title">
+        <div class="title-key">User Details</div>
+    </div>
+    <div class="field">
+        <div class="field-key">Username:</div>
+        <div class="field-value">{{user.username}}</div>
+    </div>
+    <div class="field">
+        <div class="field-key">Role:</div>
+        <div class="field-value">{{user.userType}}</div>
+    </div>
+    <div class="title">
+        <div class="title-key">Contact Details</div>
+        <a [routerLink]="['editcontact']" class="edit-contact"><mat-icon>edit</mat-icon>Edit</a>
+    </div>
+    <div class="field">
+        <div class="field-key">Email ID:</div>
+        <div class="field-value">{{user.contact.email}}</div>
+    </div>
+    <div class="field">
+        <div class="field-key">Phone:</div>
+        <div class="field-value">{{user.contact.phone}}</div>
+    </div>
+    <div class="field">
+        <div class="field-key">City:</div>
+        <div class="field-value">{{user.contact.city}}</div>
+    </div>
+    <div class="field">
+        <div class="field-key">State:</div>    
+        <div class="field-value">{{user.contact.state}}</div>
+    </div>
+    <div class="field">
+        <div class="field-key">ZIP Code:</div>
+        <div class="field-value">{{user.contact.zip}}</div>
+    </div>
+</div>

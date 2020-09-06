@@ -20,6 +20,7 @@ export class RegisterService {
     user.contact = contact;
     user.username = userDetails.username;
     user.password = userDetails.password;
+    user.userType = "User";
     return this.http.post<User>(`${environment.backendUrl}/user-service/users/register`, user);
   }
 

@@ -21,11 +21,17 @@ import { StockComponent } from './components/stock-market/stock/stock.component'
 import { StockExchangeComponent } from './components/stock-market/stock-exchange/stock-exchange.component';
 import { AddEditComponent } from './components/stock-market/stock/add-edit/add-edit.component';
 import { ListComponent } from './components/stock-market/stock/list/list.component';
-import {JwtInterceptor} from './helper/http-interceptor';
-import {ErrorInterceptor} from './helper/error-interceptor';
+import { JwtInterceptor } from './helper/http-interceptor';
+import { ErrorInterceptor } from './helper/error-interceptor';
 import { AuthenticationService } from './services/authentication.service';
-// import { MatSidenavModule } from '@angular/material/sidenav';
-// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import {MatMenuModule} from '@angular/material/menu';
+import {MatListModule} from '@angular/material/list';
+import {MatIconModule} from '@angular/material/icon';
+import {MatToolbarModule} from '@angular/material/toolbar';
+import { ProfileComponent } from './components/profile/profile.component';
+import { EditContactComponent } from './components/edit-contact/edit-contact.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +49,8 @@ import { AuthenticationService } from './services/authentication.service';
     StockExchangeComponent,
     AddEditComponent,
     ListComponent,
+    ProfileComponent,
+    EditContactComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,12 +58,13 @@ import { AuthenticationService } from './services/authentication.service';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    // BrowserAnimationsModule,
+    MatListModule,
+    BrowserAnimationsModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatToolbarModule,
     // UiSwitchModule
   ],
-  // exports: [
-  //   MatSidenavModule
-  // ],
   providers: [
     StockExchangeService,
     UserService,

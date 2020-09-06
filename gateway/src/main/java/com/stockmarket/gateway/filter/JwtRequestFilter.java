@@ -51,12 +51,14 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 				System.out.println("JWT Token has expired");
 			}
 		} else {
+			System.out.println(requestTokenHeader);
 			System.out.println("JWT Token does not begin with /'Bearer /'String");
 		}
+		System.out.println("jwtToken = "+requestTokenHeader);
 
 		// validate token
 		if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-
+			System.out.println("----jwtToken = "+requestTokenHeader);
 			try {
 				MyUser myUser = this.jwtUserService.getUserByUsername(username);
 				UserDetails userDetails = new User(myUser.getUsername(), myUser.getPassword(), new ArrayList<>());
@@ -74,6 +76,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 			}
 			
 		}
+		System.out.println("jwtToken = "+requestTokenHeader);
 		chain.doFilter(request, response);
 	}
 
