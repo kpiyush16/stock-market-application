@@ -5,7 +5,34 @@ div.invalid-feedback{
 }
 
 label {
-    // float:left;
-    // color:black;
-    font-size: 20px;
+    font-size: 150%;
+}
+
+h2{
+    margin-left: 15%;
+    text-decoration: underline;
+}
+
+form{
+    align-content: center;
+}
+
+div.form-group{
+    margin-left: 15%;
+}
+
+input.form-control{
+    font-size:120%;
+    width: 50%;
+}
+
+button.btn-primary{
+    // margin-left:10%;
+    width: 15%;
+    font-size:150%;
+}
+
+a.btn-link{
+    // margin-left:10%;
+    font-size:150%;
 }

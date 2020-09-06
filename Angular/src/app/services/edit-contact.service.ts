@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-// import { User } from '../models/user'
+import { User } from '../models/user'
 import { AuthenticationService } from './authentication.service';
-import { Contact } from '../models/contact'
+// import { Contact } from '../models/contact'
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +21,7 @@ export class EditContactService {
 
   editContact(contact) {
     console.log(contact);
-    return this.http.post<Contact>(`${environment.backendUrl}/user-service/contacts/${this.currentUser.contact.id}`, contact);
+    return this.http.put<User>(`${environment.backendUrl}/user-service/contacts/${this.currentUser.contact.id}`, contact);
   }
 
 }

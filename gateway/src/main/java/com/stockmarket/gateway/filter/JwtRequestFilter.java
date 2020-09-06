@@ -1,7 +1,7 @@
 package com.stockmarket.gateway.filter;
 
 import java.io.IOException;
-import java.util.ArrayList;
+// import java.util.ArrayList;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
@@ -12,13 +12,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.User;
+// import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.WebAuthenticationDetailsSource;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import com.stockmarket.gateway.services.JwtService;
-import com.stockmarket.gateway.utils.MyUser;
+// import com.stockmarket.gateway.utils.MyUser;
 import com.stockmarket.gateway.utils.JwtTokenUtil;
 
 import io.jsonwebtoken.ExpiredJwtException;
@@ -37,6 +37,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 			throws ServletException, IOException {
 
 		final String requestTokenHeader = request.getHeader("Authorization");
+		final StringBuffer url = request.getRequestURL();
+		System.out.println("url = " + url);
 
 		String username = null;
 		String jwtToken = null;
@@ -60,8 +62,9 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 		if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
 			System.out.println("----jwtToken = "+requestTokenHeader);
 			try {
-				MyUser myUser = this.jwtUserService.getUserByUsername(username);
-				UserDetails userDetails = new User(myUser.getUsername(), myUser.getPassword(), new ArrayList<>());
+				// MyUser myUser = this.jwtUserService.getUserByUsername(username);
+				// UserDetails userDetails = new User(myUser.getUsername(), myUser.getPassword(), new ArrayList<>());
+				UserDetails userDetails = this.jwtUserService.loadUserByUsername(username);
 				if (jwtTokenUtil.validateToken(jwtToken, userDetails)) {
 
 					UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(

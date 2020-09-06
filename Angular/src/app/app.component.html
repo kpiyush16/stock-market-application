@@ -13,7 +13,7 @@
 </nav> -->
 
 
-<div class="example-container" *ngIf="currentUser; else elseBlock">
+<div class="example-container" *ngIf="currentUser">
     <mat-toolbar class="example-toolbar">
       <button mat-icon-button class="side-nav-button" (click)="snav.toggle()"><mat-icon class="menu-icon">menu</mat-icon></button>
       <h1 class="app-name">Stock Market App</h1>
@@ -59,16 +59,11 @@
                     Logout
                 </a>
             </div>
-            <!-- <button mat-list-item (click)="logout()">Logout</button> -->
-            <!-- <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a> -->
         </mat-nav-list>
       </mat-sidenav>
   
       <mat-sidenav-content>
-          <!-- tgbwsefnkeafnkeajnf -->
-        {{hell}}
-        <!-- <p *ngFor="let content of fillerContent">{{content}}</p> -->
-        <router-outlet></router-outlet>
+            <router-outlet></router-outlet>
       </mat-sidenav-content>
     </mat-sidenav-container>
   </div>
@@ -91,14 +86,7 @@
 </nav> -->
 
 
-<ng-template #elseBlock>
-    <div class="jumbotron">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 offset-sm-2">
-                    <router-outlet></router-outlet>
-                </div>
-            </div>
-        </div>
-    </div>
-</ng-template>
+
+<div *ngIf="!currentUser">
+    <router-outlet></router-outlet>
+</div>
