@@ -30,6 +30,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatListModule} from '@angular/material/list';
 import {MatIconModule} from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatRadioModule, MAT_RADIO_DEFAULT_OPTIONS} from '@angular/material/radio';
 import { ProfileComponent } from './components/profile/profile.component';
 import { EditContactComponent } from './components/edit-contact/edit-contact.component';
 import { AddCompanyComponent } from './components/add-company/add-company.component';
@@ -81,7 +82,7 @@ import { SuperCompanyComponent } from './components/super-company/super-company.
     ViewCompanyStockExchangeComponent,
     AddCompanyStockExchangeComponent,
     DeleteCompanyStockExchangeComponent,
-    SuperCompanyComponent
+    SuperCompanyComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,6 +95,7 @@ import { SuperCompanyComponent } from './components/super-company/super-company.
     MatSidenavModule,
     MatIconModule,
     MatToolbarModule,
+    MatRadioModule
     // UiSwitchModule
   ],
   providers: [
@@ -102,7 +104,8 @@ import { SuperCompanyComponent } from './components/super-company/super-company.
     CompanyService,
     AuthenticationService,
     {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
-    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    // {provide: MAT_RADIO_DEFAULT_OPTIONS, useValue: { color: 'accent' }}
   ],
   bootstrap: [AppComponent]
 })

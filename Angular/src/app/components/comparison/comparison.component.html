@@ -1,1 +1,37 @@
-<p>comparison works!</p>
+<div class="curr-date">{{currDate}}</div>
+<!-- <br> -->
+<div class="curr-time">{{currTime}}</div>
+
+<div *ngIf="showChart">
+    <div>
+        <button (click) = "add()">
+            Add Company/Sector
+        </button>
+    </div>
+
+    <div *ngIf="companyList && sectorList">
+        <div *ngFor="let company of companyList">
+            {{company.name}}
+            <button>
+                Delete
+            </button>
+            </div>
+        <div *ngFor="let sector of sectorList">
+            {{sector.name}}
+            <button>
+                Delete
+            </button>
+        </div>
+    </div>
+
+    <div *ngIf="!(companyList && sectorList)">
+        No Data to display chart
+    </div>
+</div>
+
+<div *ngIf="!showChart">
+    <mat-radio-group aria-label="Select">
+        <mat-radio-button value="company">Company</mat-radio-button>
+        <mat-radio-button value="sector">Sector</mat-radio-button>
+    </mat-radio-group>
+</div>

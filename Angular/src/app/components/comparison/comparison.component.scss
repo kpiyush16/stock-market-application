@@ -1,1 +1,31 @@
-@import "~bootstrap/dist/css/bootstrap.css"
+@import "~bootstrap/dist/css/bootstrap.css";
+
+// p.curr-date{
+//     float:right;
+// }
+
+// p.curr-time{
+//     float:right;
+// }
+
+// mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+//     // background-color: green;
+//     border-color: green;
+//     // color:green;
+    
+// }
+
+
+.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+    border-color:green; 
+  }
+  
+  .mat-radio-button.mat-accent .mat-radio-inner-circle{
+    color:green;
+    background-color:green ;
+  }
+  
+  .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+      background-color:green;
+  }
+

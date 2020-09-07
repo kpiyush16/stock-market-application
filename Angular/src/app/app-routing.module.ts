@@ -25,6 +25,7 @@ import { ViewCompanyStockExchangeComponent } from './components/view-company-sto
 import { AddCompanyStockExchangeComponent } from './components/add-company-stock-exchange/add-company-stock-exchange.component';
 import { DeleteCompanyStockExchangeComponent } from './components/delete-company-stock-exchange/delete-company-stock-exchange.component';
 import { SuperCompanyComponent } from './components/super-company/super-company.component';
+import { ComparisonComponent } from './components/comparison/comparison.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
@@ -70,6 +71,8 @@ const routes: Routes = [
   {path: 'view-company-stock-exchange/:id', component: ViewCompanyStockExchangeComponent},
   {path: 'add-company-stock-exchange/:id', component: AddCompanyStockExchangeComponent},
   {path: 'delete-company-stock-exchange/:id', component: DeleteCompanyStockExchangeComponent},
+  {path: 'comparisonCharts', component: ComparisonComponent, canActivate:[AuthGuard]},
+
   {path: '**', pathMatch: 'full',redirectTo: 'home'}
 ];
 
