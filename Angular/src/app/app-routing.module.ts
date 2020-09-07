@@ -32,7 +32,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent, canActivate:[AuthGuard]},
   {path: 'editcontact', component: EditContactComponent, canActivate:[AuthGuard],
-    data:{isAdmin:[true]}
+    data:{roleCheck:[true]}
   },
 //   {path: 'profile', component: ProfileComponent, canActivate:[AuthGuard],
 //   children:[
