@@ -47,6 +47,8 @@ import { ViewCompanyStockExchangeComponent } from './components/view-company-sto
 import { AddCompanyStockExchangeComponent } from './components/add-company-stock-exchange/add-company-stock-exchange.component';
 import { DeleteCompanyStockExchangeComponent } from './components/delete-company-stock-exchange/delete-company-stock-exchange.component';
 import { SuperCompanyComponent } from './components/super-company/super-company.component';
+import { ExcelUploaderComponent } from './components/stock-market/excel-uploader/excel-uploader.component';
+import { EditStockComponent } from './components/stock-market/stock/edit-stock/edit-stock.component';
 
 
 @NgModule({
@@ -81,7 +83,9 @@ import { SuperCompanyComponent } from './components/super-company/super-company.
     ViewCompanyStockExchangeComponent,
     AddCompanyStockExchangeComponent,
     DeleteCompanyStockExchangeComponent,
-    SuperCompanyComponent
+    SuperCompanyComponent,
+    ExcelUploaderComponent,
+    EditStockComponent
   ],
   imports: [
     BrowserModule,

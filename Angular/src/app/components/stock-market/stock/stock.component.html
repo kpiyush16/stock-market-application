@@ -17,7 +17,7 @@
         <router-outlet></router-outlet>
     </div>
 </div> -->
-<nav class="navbar navbar-inverse">
+<!-- <nav class="navbar navbar-inverse">
     <div class="container-fluid">
     <ul class="nav navbar-nav">
         <a (click)="toggleAddMode()">Add Stock   </a>    
@@ -42,11 +42,6 @@
             <td>{{stock.price}}</td>
             <td *ngIf="stock.stockExchange">{{stock.stockExchange.name}}</td>
             <td style="white-space: nowrap">
-                <!-- <a routerLink="edit/{{stock.id}}" class="btn btn-sm btn-primary mr-1">Edit</a> -->
-                <!-- <button (click)="deleteStock(stock.id)" class="btn btn-sm btn-danger btn-delete-user">
-                    <span *ngIf="user.isDeleting" class="spinner-border spinner-border-sm"></span>
-                    <span *ngIf="!user.isDeleting">Delete</span>
-                </button> -->
                 <button>Edit</button>
                 <button>Delete</button>
             </td>
@@ -98,4 +93,47 @@
           Browse Excel
         </button>
       </div>
+</div> -->
+
+<router-outlet></router-outlet>
+
+<div class="container">
+    <h1> Stocks </h1>
+
+    <div class=" card my-5 ">
+        <div class="card-body ">
+            <a class="btn btn-sm btn-success mb-2" [routerLink]="['add-stock']">Add Stock</a>
+            <a class="btn btn-sm btn-success mb-2" [routerLink]="['upload-excel']" style="margin-left: 10px">Import Excel</a>
+            <table class="table table-bordered table-striped ">
+                <thead>
+                    <tr>
+                        <!-- <th scope="col ">Sector Id</th> -->
+                        <th scope="col ">Id</th>
+                        <th scope="col ">Company Id</th>
+                        <th scope="col ">Price</th>
+                        <th scope="col ">Stock Exchange</th>
+                        <th scope="col ">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let stock of stockList['stockList']">
+                        <!-- <td>{{ sector.id }}</td> -->
+                        <td>{{ stock.id }}</td>
+                        <td>{{ stock.companyId }}</td>
+                        <td>{{ stock.price }}</td>
+                        <td>{{ stock.stockExchange.name }}</td>
+                        <td>
+                            <button (click)="deleteStock(stock.id)" class="btn btn-sm btn-danger btn-delete-user">
+                                <span *ngIf="isDeleting" class="spinner-border spinner-border-sm"></span>
+                                <span *ngIf="!isDeleting">Delete</span>
+                            </button>
+                            <!-- <button (click)="showStock(sector.id)" class="btn btn-info" style="margin-left: 10px">Details</button> -->
+                            <button (click)="updateStock(stock.id)" class="btn btn-warning" style="margin-left: 10px">Update</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
 </div>
