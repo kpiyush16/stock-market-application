@@ -6,14 +6,13 @@ spring:
   application:
     name: gateway
 
-
 # http://localhost:8989/user-service/users
 # http://localhost:8989/company/companies
 # http://localhost:8989/stock-exchange/stockexchanges
 zuul:
-  host:
-    connect-timeout-millis: 2000
-    socket-timeout-millis: 5000
+  # host:
+    # connect-timeout-millis: 2000
+    # socket-timeout-millis: 5000
   routes:
     service_1:
       path: /user-service/**
@@ -24,21 +23,12 @@ zuul:
     service_3:
       path: /stock-exchange/**
       url: http://localhost:8083/
-  
-# zuul:
-#   routes:
-#     service_1:
-#       url: http://localhost:9091
-#     service_2:
-#       url: http://localhost:9090
       
 
 jwt:
   secret: somesecretkey
-  # username: arun
-  # password: arun
 
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+# eureka:
+#   client:
+#     serviceUrl:
+#       defaultZone: http://localhost:8761/eureka/

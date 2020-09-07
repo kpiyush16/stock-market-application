@@ -34,7 +34,9 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
   {path: 'profile', component: ProfileComponent, canActivate:[AuthGuard]},
-  {path: 'editcontact', component: EditContactComponent, canActivate:[AuthGuard]},
+  {path: 'editcontact', component: EditContactComponent, canActivate:[AuthGuard],
+    data:{roleCheck:[true]}
+  },
 //   {path: 'profile', component: ProfileComponent, canActivate:[AuthGuard],
 //   children:[
 //     {path: 'editcontact', component: EditContactComponent, canActivate:[AuthGuard]}
@@ -79,4 +81,5 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule { 
+}

@@ -13,12 +13,14 @@ export class ProfileComponent implements OnInit {
 
   user:User;
   success:string;
+  isAdmin: boolean;
   
   constructor(
     private authenticationService: AuthenticationService,
     private route: ActivatedRoute
     ){ 
     this.user = this.authenticationService.currentUserValue;
+    this.isAdmin = this.authenticationService.isAdminValue;
   }
 
   ngOnInit(): void {

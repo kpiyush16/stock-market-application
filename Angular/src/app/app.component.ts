@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticationService } from './services/authentication.service';
+import { UpdateCompanyComponent } from './components/update-company/update-company.component';
 
 @Component({
   selector: 'app-root',
@@ -32,6 +33,22 @@ export class AppComponent {
           //   this.isAdmin = true;
           // }
         }
+    }
+
+    ngOnChages(){
+      this.update(this.currentUser);
+    }
+
+    update(user){
+      if(user){
+        this.username=user.username;
+          // if(user.userType == "admin"){
+          //   this.isAdmin = true;
+          // }
+          // else if(user.userType == "user"){
+          //   this.isAdmin = true;
+          // }
+      }
     }
 
     logout() {

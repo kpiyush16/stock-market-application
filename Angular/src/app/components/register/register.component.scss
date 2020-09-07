@@ -1,11 +1,43 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 
+div.super{
+    margin-left: 30%;
+    margin-top: 10%;
+    margin-right: 30%;
+}
+
 div.invalid-feedback{
     color: mediumvioletred;
 }
 
 label {
-    // float:left;
-    // color:black;
-    font-size: 20px;
+    font-size: 130%;
+}
+
+h2{
+    // margin-left: 15%;
+    text-decoration: underline;
+}
+
+
+div.form-group{
+    // margin-left: 15%;
+    font-size: 150%;
+}
+
+input.form-control{
+    font-size:110%;
+    height: 110%;
+}
+
+button.btn-primary{
+    // margin-left:10%;
+    // width: 15%;
+    font-size:120%;
+}
+
+a.btn-link{
+    // margin-left:10%;
+    font-size:130%;
+    // text-decoration: none;
 }
