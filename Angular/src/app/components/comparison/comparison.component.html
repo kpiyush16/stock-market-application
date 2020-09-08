@@ -1,118 +1,116 @@
-<div class="curr-date">{{currDate}}</div>
-<div class="curr-time">{{currTime}}</div>
+<div class="container">
+    <div class="curr-date">
+        {{currDate}}</div>
+    <div class="curr-time">{{currTime}}</div>
 
-<div *ngIf="showChart">
-    <div>
-        <button (click) = "addView()">
+    <br>
+    <div *ngIf="showChart">
+        <div>
+            <button (click)="addView()">
             Add Company/Sector
         </button>
-    </div>
+        </div>
 
-    <div *ngIf="lineChartData.length>0; else elseBlock">
-        <div *ngFor="let sector of chartSectorList; let i=index">
-            Sector:{{sector.name}}({{chartSectorSEList[i].name}})
-            <button class="delete" (click)="deleteSector(i)">
+        <div *ngIf="lineChartData.length>0; else elseBlock">
+            <div *ngFor="let sector of chartSectorList; let i=index">
+                Sector:{{sector.name}}({{chartSectorSEList[i].name}})
+                <button class="delete" (click)="deleteSector(i)">
                     <mat-icon>delete</mat-icon>
             </button>
-        </div>
-        <div *ngFor="let company of chartCompanyList; let i=index">
-            Company:{{company.name}}({{chartCompanySEList[i].name}})
-            <button class="delete" (click)="deleteCompany(i)">
+            </div>
+            <div *ngFor="let company of chartCompanyList; let i=index">
+                Company:{{company.name}}({{chartCompanySEList[i].name}})
+                <button class="delete" (click)="deleteCompany(i)">
                     <mat-icon>delete</mat-icon>
             </button>
-        </div>
-        <mat-radio-group aria-label="Select" [(ngModel)] ="lineChartType">
-            Select 
-            <mat-radio-button value="bar">Bar Chart</mat-radio-button>
-            <mat-radio-button value="line">Line Chart</mat-radio-button>
-        </mat-radio-group>
-        <div style="display: block;" [style.height.%]=75 [style.width.%]=75>
-            <canvas baseChart
-              [datasets]="lineChartData"
-              [labels]="lineChartLabels"
-              [options]="lineChartOptions"
-              [colors]="lineChartColors"
-              [legend]="lineChartLegend"
-              [chartType]="lineChartType"
-              [plugins]="lineChartPlugins">
+            </div>
+            <mat-radio-group aria-label="Select" [(ngModel)]="lineChartType">
+                Select
+                <mat-radio-button value="bar">Bar Chart</mat-radio-button>
+                <mat-radio-button value="line">Line Chart</mat-radio-button>
+            </mat-radio-group>
+            <div style="display: block;" [style.height.%]=75 [style.width.%]=75>
+                <canvas baseChart [datasets]="lineChartData" [labels]="lineChartLabels" [options]="lineChartOptions" [colors]="lineChartColors" [legend]="lineChartLegend" [chartType]="lineChartType" [plugins]="lineChartPlugins">
             </canvas>
+            </div>
         </div>
-    </div>
-      
-    <ng-template #elseBlock>
-        <div>
-            No Company/Sector added to display chart
-        </div>
-    </ng-template>
-</div>
 
-<div *ngIf="!showChart">
-    <mat-radio-group aria-label="Select" [(ngModel)] ="chosenItem" (change)="changeEntity()">
-        Select 
-        <mat-radio-button value="company">Company</mat-radio-button>
-        <mat-radio-button value="sector">Sector</mat-radio-button>
-    </mat-radio-group>
-    <form [formGroup]="addEntityForm" (ngSubmit)="addEntity()">
-        <div>
-            <mat-form-field  class="form-element">
-                <mat-select formControlName="stockExchange" placeholder="Select Stock Exchange" (selectionChange)="seSelected()">  
-                    <mat-option disabled>-- Select Stock Exchange --</mat-option>
-                    <mat-option [value]="se" *ngFor="let se of stockExchangeList">{{se.name}}</mat-option>
-                </mat-select>
-                <mat-error>  
-                    <span *ngIf="submitted && !addEntityForm.get('stockExchange').valid">Please select any item !!!</span>
-                </mat-error> 
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field *ngIf="chosenItem == 'sector'" class="form-element">
-                <mat-select formControlName="sector" placeholder="Select Sector">
-                    <mat-option disabled>-- Select Sector --</mat-option>
-                    <mat-option [value]="sect" *ngFor="let sect of sectorList">{{sect.name}}</mat-option>
-                </mat-select>  
-                <mat-error>  
-                    <span *ngIf="submitted && !addEntityForm.get('sector').valid">Please select any item !!!</span>
-                </mat-error> 
-            </mat-form-field>
-        </div>
-        <div>
-            <mat-form-field *ngIf="chosenItem == 'company'" class="form-element">
-                <mat-select formControlName="company" placeholder="Select Company">
-                    <mat-option disabled>-- Select Company --</mat-option>
-                    <mat-option [value]="comp" *ngFor="let comp of companyList">{{comp.name}}</mat-option>
-                </mat-select>  
-                <mat-error>
-                    <div *ngIf="submitted && !addEntityForm.get('company').valid">Please select any item !!!</div>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div>
-            Period:
-            <mat-form-field class="form-element">
-                <input formControlName="from" matInput [matDatepicker]="picker" placeholder="From">  
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker touchUi="true" #picker></mat-datepicker>
-                <mat-error>
-                    <div *ngIf="submitted && !addEntityForm.get('from').valid">Please select a date !!!</div>
-                </mat-error>
-            </mat-form-field>
-            <mat-form-field class="form-element">
-                <input formControlName="to" matInput [matDatepicker]="picker2" placeholder="To">  
-                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>  
-                <mat-datepicker #picker2 touchUi="true" #picker></mat-datepicker>
-                <mat-error>
-                    <div *ngIf="submitted && !addEntityForm.get('to').valid">Please select a date !!!</div>
-                </mat-error>
-            </mat-form-field>
-        </div>
-        <div class="form-group">
-            <button [disabled]="loading" class="btn btn-primary">
+        <br>
+        <ng-template #elseBlock>
+            <div>
+                No Company/Sector added to display chart
+            </div>
+        </ng-template>
+    </div>
+
+    <div *ngIf="!showChart">
+        <mat-radio-group aria-label="Select" [(ngModel)]="chosenItem" (change)="changeEntity()">
+            Select
+            <mat-radio-button value="company">Company</mat-radio-button>
+            <mat-radio-button value="sector">Sector</mat-radio-button>
+        </mat-radio-group>
+        <form [formGroup]="addEntityForm" (ngSubmit)="addEntity()">
+            <div>
+                <mat-form-field class="form-element">
+                    <mat-select formControlName="stockExchange" placeholder="Select Stock Exchange" (selectionChange)="seSelected()">
+                        <mat-option disabled>-- Select Stock Exchange --</mat-option>
+                        <mat-option [value]="se" *ngFor="let se of stockExchangeList">{{se.name}}</mat-option>
+                    </mat-select>
+                    <mat-error>
+                        <span *ngIf="submitted && !addEntityForm.get('stockExchange').valid">Please select any item !!!</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field *ngIf="chosenItem == 'sector'" class="form-element">
+                    <mat-select formControlName="sector" placeholder="Select Sector">
+                        <mat-option disabled>-- Select Sector --</mat-option>
+                        <mat-option [value]="sect" *ngFor="let sect of sectorList">{{sect.name}}</mat-option>
+                    </mat-select>
+                    <mat-error>
+                        <span *ngIf="submitted && !addEntityForm.get('sector').valid">Please select any item !!!</span>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                <mat-form-field *ngIf="chosenItem == 'company'" class="form-element">
+                    <mat-select formControlName="company" placeholder="Select Company">
+                        <mat-option disabled>-- Select Company --</mat-option>
+                        <mat-option [value]="comp" *ngFor="let comp of companyList">{{comp.name}}</mat-option>
+                    </mat-select>
+                    <mat-error>
+                        <div *ngIf="submitted && !addEntityForm.get('company').valid">Please select any item !!!</div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div>
+                Period:
+                <mat-form-field class="form-element">
+                    <input formControlName="from" matInput [matDatepicker]="picker" placeholder="From">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker touchUi="true" #picker></mat-datepicker>
+                    <mat-error>
+                        <div *ngIf="submitted && !addEntityForm.get('from').valid">Please select a date !!!</div>
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-element">
+                    <input formControlName="to" matInput [matDatepicker]="picker2" placeholder="To">
+                    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                    <mat-datepicker #picker2 touchUi="true" #picker></mat-datepicker>
+                    <mat-error>
+                        <div *ngIf="submitted && !addEntityForm.get('to').valid">Please select a date !!!</div>
+                    </mat-error>
+                </mat-form-field>
+            </div>
+            <div class="form-group">
+                <button [disabled]="loading" class="btn btn-primary">
                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                 Add
             </button>
-            <a (click)="chartView()" class="btn btn-link">Cancel</a>
-        </div>
-    </form>
-    
-    
+                <a (click)="chartView()" class="btn btn-link">Cancel</a>
+            </div>
+        </form>
+
+
+    </div>
 </div>

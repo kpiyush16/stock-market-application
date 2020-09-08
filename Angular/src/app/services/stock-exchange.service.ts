@@ -3,7 +3,6 @@ import { Observable, throwError } from 'rxjs';
 import { HttpClientModule, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Stock } from '../components/stock-market/stock/stock'
-import { environment } from 'src/environments/environment';
 import { StockExchange } from '../components/stock-market/stock-exchange/stock-exchange';
 import { StockExchangeList } from '../components/stock-market/stock-exchange/stock-exchange-list';
 import { map } from 'rxjs/operators';
