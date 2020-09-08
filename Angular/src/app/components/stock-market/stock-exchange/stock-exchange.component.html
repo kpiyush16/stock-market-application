@@ -1,26 +1,42 @@
-<div class="container">
-    <form style="border:thin black solid; padding: 40px;">
-        <div>
-            <div class="form-group col-md-6 ">
-                <label>Name</label>
-                <input type="text" [(ngModel)]="stockExchange.name" name="name" />
-            </div>
-            <div class="form-group col-md-6 ">
-                <label>Brief</label>
-                <input type="text" [(ngModel)]="stockExchange.brief" name="brief" />
-            </div>
-            <div class="form-group col-md-6 ">
-                <label>Remarks</label>
-                <input type="text" [(ngModel)]="stockExchange.remarks" name="remarks" />
-            </div>
-            <div class="form-group col-md-6 ">
-                <label>Contact ID</label>
-                <input type="tel" [(ngModel)]="stockExchange.contactId" name="contactId" />
-            </div>
-            <div>
-                <button type="Submit" (click)="addStockExchange()" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-    </form>
+<router-outlet></router-outlet>
 
+<div class="container">
+    <h1> Stocks </h1>
+
+    <div class=" card my-5 ">
+        <div class="card-body ">
+            <a class="btn btn-sm btn-success mb-2" routerLink="add-stockexchange">Add Stock Exchange</a>
+            <table class="table table-bordered table-striped ">
+                <thead>
+                    <tr>
+                        <!-- <th scope="col ">Sector Id</th> -->
+                        <th scope="col ">ID</th>
+                        <th scope="col ">Name</th>
+                        <th scope="col ">Brief</th>
+                        <th scope="col ">Remakrs</th>
+                        <th scope="col ">Contact ID</th>
+                        <th scope="col ">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let stockExchange of stockExchangeList['stockExchangeList']">
+                        <td>{{ stockExchange.id }}</td>
+                        <td>{{ stockExchange.name }}</td>
+                        <td>{{ stockExchange.brief }}</td>
+                        <td>{{ stockExchange.remarks }}</td>
+                        <td>{{ stockExchange.contactId }}</td>
+                        <td>
+                            <!-- <button (click)="deleteStockExchange(stockExchange.id)" class="btn btn-sm btn-danger btn-delete-user">
+                                <span *ngIf="isDeleting" class="spinner-border spinner-border-sm"></span>
+                                <span *ngIf="!isDeleting">Delete</span>
+                            </button> -->
+                            <button (click)="updateStockExchange(stockExchange.id)" class="btn btn-warning" style="margin-left: 10px">Update</button>
+                        </td>
+                    </tr>
+                </tbody>
+
+            </table>
+        </div>
+    </div>
 </div>
+

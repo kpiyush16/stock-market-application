@@ -27,7 +27,7 @@ export class EditStockComponent implements OnInit {
       }, error => console.log(error));
   }
 
-  updateCompany() {
+  updateStock() {
     this.stockService.updateStock(this.id, this.stock)
       .subscribe(data => {
         console.log(data);
@@ -37,7 +37,7 @@ export class EditStockComponent implements OnInit {
   }
 
   onSubmit() {
-    this.updateCompany();
+    this.updateStock();
   }
 
   gotoList() {

@@ -25,9 +25,11 @@ import { ViewCompanyStockExchangeComponent } from './components/view-company-sto
 import { AddCompanyStockExchangeComponent } from './components/add-company-stock-exchange/add-company-stock-exchange.component';
 import { DeleteCompanyStockExchangeComponent } from './components/delete-company-stock-exchange/delete-company-stock-exchange.component';
 import { SuperCompanyComponent } from './components/super-company/super-company.component';
-import { AddEditComponent } from './components/stock-market/stock/add-edit/add-edit.component';
+import { AddStockComponent } from './components/stock-market/stock/add-stock/add-stock.component';
 import { EditStockComponent } from './components/stock-market/stock/edit-stock/edit-stock.component';
 import { ExcelUploaderComponent } from './components/stock-market/excel-uploader/excel-uploader.component';
+import { AddStockexchangeComponent } from './components/stock-market/stock-exchange/add-stockexchange/add-stockexchange.component';
+import { EditStockexchangeComponent } from './components/stock-market/stock-exchange/edit-stockexchange/edit-stockexchange.component';
 
 const routes: Routes = [
   {path: 'home', component: HomeComponent, canActivate:[AuthGuard]},
@@ -50,11 +52,18 @@ const routes: Routes = [
         component: StockComponent,
         children: [
           {path: 'update-stock/:id', component: EditStockComponent},
-          {path: 'add-stock', component: AddEditComponent},
+          {path: 'add-stock', component: AddStockComponent},
           {path: 'upload-excel', component: ExcelUploaderComponent}
         ]
       },
-      {path: 'stock-exchange', component: StockExchangeComponent}
+      {
+        path: 'stock-exchange', 
+        component: StockExchangeComponent,
+        children: [
+          {path: 'update-stockexchange/:id', component: EditStockexchangeComponent},
+          {path: 'add-stockexchange', component: AddStockexchangeComponent},
+        ]
+      }
     ]
   },
   

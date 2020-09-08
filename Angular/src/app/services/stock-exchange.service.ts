@@ -12,8 +12,8 @@ import { map } from 'rxjs/operators';
 })
 export class StockExchangeService {
   constructor(private http: HttpClient) { }
-  stockUrl: "http://localhost:8083/stocks/";
-  stockExchangeUrl: "http://localhost:8083/stockexchanges/";
+  // stockUrl: "http://localhost:8083/stocks/";
+  // stockExchangeUrl: "http://localhost:8083/stockexchanges/";
 
   addStocks(stocks: Stock[]){
     stocks.forEach(element => {

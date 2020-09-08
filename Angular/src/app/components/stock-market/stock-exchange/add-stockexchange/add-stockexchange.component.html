@@ -1,0 +1,27 @@
+<div class="container">
+    <h1> Add New Stock Exchange</h1>
+
+    <div class="card my-5">
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+                <div class="form-group">
+                    <label for="name"></label>
+                    <input type="text" [(ngModel)]="stockExchange.name" name="name" class="form-control" placeholder="Enter the name of Stock Exchange" required #brief="ngModel">
+                </div>
+                <div class="form-group">
+                    <label for="brief"></label>
+                    <input type="text" [(ngModel)]="stockExchange.brief" name="brief" class="form-control" placeholder="Enter the brief description" required #brief="ngModel">
+                </div>
+                <div class="form-group">
+                    <label for="remarks"></label>
+                    <input type="text" [(ngModel)]="stockExchange.remarks" name="remarks" class="form-control" placeholder="Remarks here" required #brief="ngModel">
+                </div>
+                <div class="form-group">
+                    <label for="contactId">Contact ID</label>
+                    <input type="tel" [(ngModel)]="stockExchange.contactId" name="contactId" class="form-control" placeholder="Enter the Contact number" required #code="ngModel">
+                </div>
+                <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

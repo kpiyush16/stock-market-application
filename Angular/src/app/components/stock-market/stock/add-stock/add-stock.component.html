@@ -18,10 +18,11 @@
                     <input type="number" [(ngModel)]="stock.price" name="price" class="form-control" placeholder="Enter price of stock" required #code="ngModel">
                 </div>
                 <div class="form-group">
-                    <label for="stockExchange">Stock Exchange</label>
-                    <input type="text" [(ngModel)]="stock.stockExchange.name" name="stockExchange" class="form-control" placeholder="Enter Stock Exchange Name" required #code="ngModel">
+                    <label>Stock Exchange</label>
+                    <select [(ngModel)]="stock.stockExchange" name="stockExchange">
+                        <option *ngFor="let se of stochExchanges['stockExchangeList']" [ngValue]="se">{{se.name}}</option>
+                    </select>
                 </div>
-
                 <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
             </form>
         </div>

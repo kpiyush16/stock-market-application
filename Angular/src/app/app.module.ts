@@ -19,8 +19,7 @@ import { UserService } from "./services/user.service";
 import { CompanyService } from "./services/company.service";
 import { StockComponent } from './components/stock-market/stock/stock.component';
 import { StockExchangeComponent } from './components/stock-market/stock-exchange/stock-exchange.component';
-import { AddEditComponent } from './components/stock-market/stock/add-edit/add-edit.component';
-import { ListComponent } from './components/stock-market/stock/list/list.component';
+import { AddStockComponent } from './components/stock-market/stock/add-stock/add-stock.component';
 import { JwtInterceptor } from './helper/http-interceptor';
 import { ErrorInterceptor } from './helper/error-interceptor';
 import { AuthenticationService } from './services/authentication.service';
@@ -49,6 +48,8 @@ import { DeleteCompanyStockExchangeComponent } from './components/delete-company
 import { SuperCompanyComponent } from './components/super-company/super-company.component';
 import { ExcelUploaderComponent } from './components/stock-market/excel-uploader/excel-uploader.component';
 import { EditStockComponent } from './components/stock-market/stock/edit-stock/edit-stock.component';
+import { AddStockexchangeComponent } from './components/stock-market/stock-exchange/add-stockexchange/add-stockexchange.component';
+import { EditStockexchangeComponent } from './components/stock-market/stock-exchange/edit-stockexchange/edit-stockexchange.component';
 
 
 @NgModule({
@@ -65,8 +66,7 @@ import { EditStockComponent } from './components/stock-market/stock/edit-stock/e
     IpoManageComponent,
     StockComponent,
     StockExchangeComponent,
-    AddEditComponent,
-    ListComponent,
+    AddStockComponent,
     ProfileComponent,
     EditContactComponent,
     AddCompanyComponent,
@@ -85,7 +85,9 @@ import { EditStockComponent } from './components/stock-market/stock/edit-stock/e
     DeleteCompanyStockExchangeComponent,
     SuperCompanyComponent,
     ExcelUploaderComponent,
-    EditStockComponent
+    EditStockComponent,
+    AddStockexchangeComponent,
+    EditStockexchangeComponent
   ],
   imports: [
     BrowserModule,
