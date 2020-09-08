@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { StockExchangeList } from './stock-exchange-list';
 import { StockExchange } from './stock-exchange';
 import { HttpClient } from '@angular/common/http';
+import { StockExchangeService } from 'src/app/services/stock-exchange.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-stock-exchange',
@@ -11,28 +13,32 @@ import { HttpClient } from '@angular/common/http';
 export class StockExchangeComponent implements OnInit {
 
 
-  stockExchange: StockExchange = new StockExchange(); 
-  stockExchangeUrl: string = "http://localhost:8083/stockexchanges/";
-  stockExchanges: StockExchangeList = new StockExchangeList();
+  stockExchange: StockExchange = new StockExchange();
   response: any;
+  // isDeleting: boolean = false;
 
-  constructor(private http: HttpClient) {  }
+  stockExchangeList: StockExchangeList = new StockExchangeList();
+  constructor(private stockService: StockExchangeService,  private router: Router) { }
+  
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.stockService.getStockExchanges()
+    .subscribe(response => Object.assign(this.stockExchangeList, response));
+    console.log(this.stockExchangeList);
   }
 
-  addStockExchange(){
-    console.log(this.stockExchange);
-    this.http.post<StockExchange>(this.stockExchangeUrl, this.stockExchange)
-    .subscribe(response => this.response = response);
-    console.log(this.response);
+  updateStockExchange(id: number) {
+    this.router.navigate(['stock-market/stock-exchange/update-stockexchange', id]);
   }
 
-  getStockExchanges(){
-    this.http.get(this.stockExchangeUrl)
-    .subscribe((response) => {
-      this.response = response;
-      console.log(this.response);
-    });
-  }
+  // // Deletion not permitted
+  // deleteStockExchange(id: number) {
+  //   const user = this.stockExchangeList['stockExchangeList'].find(x => x.id === id);
+  //   this.isDeleting = true;
+
+  //   this.stockService.deleteStockExchange(id)
+  //       .subscribe(() => this.stockExchangeList['stockExchangeList'] = this.stockExchangeList['stockExchangeList'].filter(x => x.id !== id));
+  //   this.isDeleting = false;
+  // }
+
 }

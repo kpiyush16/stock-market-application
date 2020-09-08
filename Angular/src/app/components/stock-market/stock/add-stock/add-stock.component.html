@@ -1,0 +1,30 @@
+<div class="container">
+    <h1> Add New Stock </h1>
+
+    <div class="card my-5">
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input type="number" [(ngModel)]="stock.id" name="id" class="form-control" placeholder="Enter Stock ID" required #name="ngModel">
+                </div>
+                <div class="form-group">
+                    <label for="companyId">Company ID</label>
+                    <input type="number" [(ngModel)]="stock.companyId" name="companyId" class="form-control" placeholder="Enter company id" required #brief="ngModel">
+                </div>
+                <!-- <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div> -->
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="number" [(ngModel)]="stock.price" name="price" class="form-control" placeholder="Enter price of stock" required #code="ngModel">
+                </div>
+                <div class="form-group">
+                    <label>Stock Exchange</label>
+                    <select [(ngModel)]="stock.stockExchange" name="stockExchange">
+                        <option *ngFor="let se of stochExchanges['stockExchangeList']" [ngValue]="se">{{se.name}}</option>
+                    </select>
+                </div>
+                <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,29 @@
+<div class="container">
+    <h1> Edit Stock </h1>
+
+    <div class="card my-5">
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+                <div class="form-group">
+                    <label for="id">ID</label>
+                    <input type="number" required [(ngModel)]="stock.id" name="id" class="form-control" placeholder="Enter Stock ID" required #name="ngModel">
+                </div>
+                <div class="form-group">
+                    <label for="companyId">Company ID</label>
+                    <input type="number" [(ngModel)]="stock.companyId" name="companyId" class="form-control" placeholder="Enter company id" required #brief="ngModel">
+                </div>
+                <!-- <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div> -->
+                <div class="form-group">
+                    <label for="price">Price</label>
+                    <input type="price" [(ngModel)]="stock.price" name="price" class="form-control" placeholder="Enter price of stock" required #code="ngModel">
+                </div>
+                <div *ngIf="stock.stockExchange" class="form-group">
+                    <label for="stockExchange">Stock Exchange</label>
+                    <input type="text" [(ngModel)]="stock.stockExchange.name" name="stockExchange" class="form-control" placeholder="Enter Stock Exchange Name" required #code="ngModel">
+                </div>
+
+                <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

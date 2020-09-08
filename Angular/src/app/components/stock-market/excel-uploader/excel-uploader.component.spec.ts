@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ListComponent } from './list.component';
+import { ExcelUploaderComponent } from './excel-uploader.component';
 
-describe('ListComponent', () => {
-  let component: ListComponent;
-  let fixture: ComponentFixture<ListComponent>;
+describe('ExcelUploaderComponent', () => {
+  let component: ExcelUploaderComponent;
+  let fixture: ComponentFixture<ExcelUploaderComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ListComponent ]
+      declarations: [ ExcelUploaderComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ListComponent);
+    fixture = TestBed.createComponent(ExcelUploaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

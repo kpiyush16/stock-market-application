@@ -1,0 +1,57 @@
+<div class="container">
+    <h1> Edit Stock Exchange</h1>
+
+    <div class="card my-5">
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" required [(ngModel)]="stockExchange.name" name="name" class="form-control" placeholder="Enter Stock Exchange name" required #name="ngModel">
+                </div>
+                <div class="form-group">
+                    <label for="brief">Brief</label>
+                    <input type="text" [(ngModel)]="stockExchange.brief" name="brief" class="form-control" placeholder="Enter Brief" required #brief="ngModel">
+                </div>
+                <!-- <div [hidden]="!email.pristine" class="alert alert-danger">Email is required</div> -->
+                <div class="form-group">
+                    <label for="price">Remarks</label>
+                    <input type="text" [(ngModel)]="stockExchange.remarks" name="remarks" class="form-control" placeholder="Enter Remarks" required #code="ngModel">
+                </div>
+                <div class="form-group">
+                    <label for="contactId">Contact ID</label>
+                    <input type="text" [(ngModel)]="stockExchange.contactId" name="contactId" class="form-control" placeholder="Enter Contact Number" required #code="ngModel">
+                </div>
+
+                <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="container">
+    <form style="border:thin black solid; padding: 40px;">
+        <div>
+            <div class="form-group col-md-6 ">
+                <label>Name</label>
+                <input type="text" [(ngModel)]="stockExchange.name" name="name" />
+            </div>
+            <div class="form-group col-md-6 ">
+                <label>Brief</label>
+                <input type="text" [(ngModel)]="stockExchange.brief" name="brief" />
+            </div>
+            <div class="form-group col-md-6 ">
+                <label>Remarks</label>
+                <input type="text" [(ngModel)]="stockExchange.remarks" name="remarks" />
+            </div>
+            <div class="form-group col-md-6 ">
+                <label>Contact ID</label>
+                <input type="tel" [(ngModel)]="stockExchange.contactId" name="contactId" />
+            </div>
+            <div>
+                <button type="Submit" (click)="addStockExchange()" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+
+</div> -->
