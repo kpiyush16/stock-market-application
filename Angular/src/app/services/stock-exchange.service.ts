@@ -2,12 +2,14 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { HttpClientModule, HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Stock } from '../components/stock-market/stock/stock'
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StockExchangeService {
   constructor(private http: HttpClient) { }
+
   stockUrl: "http://localhost:8083/stocks/";
 
   addStock(stock: Stock) {
@@ -18,6 +20,23 @@ export class StockExchangeService {
   getStocks() {
     return this.http.get(this.stockUrl);
   }
+
+  getAllStockExchanges(){
+    return this.http.get(`${environment.backendUrl}/stock-exchange/stockexchanges`);
+  }
+
+  getCompaniesByStockExchange(id:number){
+    return this.http.get(`${environment.backendUrl}/stock-exchange/stockexchanges/${id}/companies`);
+  }
+
+  getStocksByStockExchange(stockExchangeId:number) {
+    return this.http.get(`${environment.backendUrl}/stock-exchange/stocks/stockexchanges/${stockExchangeId}`);
+  }
+
+  getStocksByStockExchangeAndCompany(stockExchangeId:number, companyId:number) {
+    return this.http.get(`${environment.backendUrl}/stock-exchange/stocks/stockexchanges/${stockExchangeId}/companies/${companyId}`);
+  }
+
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

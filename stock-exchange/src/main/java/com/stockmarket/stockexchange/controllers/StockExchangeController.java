@@ -24,8 +24,8 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/stockexchanges")
 @CrossOrigin
+@RequestMapping("/stockexchanges")
 public class StockExchangeController {
 	@Autowired
 	private StockExchangeService stockExchangeService;

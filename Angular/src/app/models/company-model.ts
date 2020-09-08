@@ -1,3 +1,5 @@
+import { Sector } from './sector';
+
 export class CompanyModel {
 
     id: number;
@@ -5,7 +7,7 @@ export class CompanyModel {
     ceo: String;
     brief: String;
     code: String;
-    sector: [];
-    boardOfDirectors: [];
-    stockExchangesId: [];
+    sector: Sector[];
+    boardOfDirectors: String[];
+    stockExchangesId: number[];
 }

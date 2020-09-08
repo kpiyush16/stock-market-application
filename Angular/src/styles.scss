@@ -1,22 +1,23 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-body{
-    background-color: skyblue;
-}
+// body{
+//     background-color: white;
+// }
 
 
-.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
-    border-color:green; 
-  }
+// .mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
+//     border-color:green; 
+//   }
   
-  .mat-radio-button.mat-accent .mat-radio-inner-circle{
-    color:green;
-    background-color:green ;
-  }
+//   .mat-radio-button.mat-accent .mat-radio-inner-circle{
+//     color:green;
+//     background-color:green ;
+//   }
   
-  .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
-      background-color:green;
-  }
+//   .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
+//       background-color:green;
+//   }

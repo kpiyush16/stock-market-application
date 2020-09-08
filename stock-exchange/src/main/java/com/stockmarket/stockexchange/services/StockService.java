@@ -43,20 +43,20 @@ public class StockService {
 
 	public List<Stock> getStocksByStockExchangeAndCompany(int stockExchangeId, int companyId) {
 		List<Stock> stockList = new ArrayList<>();
-		stockRepository.findByStockExchangeIdAndCompanyId(stockExchangeId, companyId)
+		stockRepository.findByStockExchangeIdAndCompanyIdOrderByDateAsc(stockExchangeId, companyId)
 				.forEach(stockList::add);
 		return stockList;	}
 	
 	public List<Stock> getStocksByStockExchange(int stockExchangeId) {
 		List<Stock> stockList = new ArrayList<>();
-		stockRepository.findByStockExchangeId(stockExchangeId)
+		stockRepository.findByStockExchangeIdOrderByDateAsc(stockExchangeId)
 				.forEach(stockList::add);
 		return stockList;
 	}
 	
 	public List<Stock> getStocksByCompany(int companyId) {
 		List<Stock> stockList = new ArrayList<>();
-		stockRepository.findByCompanyId(companyId)
+		stockRepository.findByCompanyIdOrderByDateAsc(companyId)
 				.forEach(stockList::add);
 		return stockList;
 	}

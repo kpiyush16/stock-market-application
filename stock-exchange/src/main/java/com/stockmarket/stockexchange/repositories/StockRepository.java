@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface StockRepository extends CrudRepository<Stock, Integer>{
-    public List<Stock> findByCompanyId(int companyId);
-    public List<Stock> findByStockExchangeId(int stockExchangeId);
-    public List<Stock> findByStockExchangeIdAndCompanyId(int stockExchangeId, int companyId);
+    public List<Stock> findByCompanyIdOrderByDateAsc(int companyId);
+    public List<Stock> findByStockExchangeIdOrderByDateAsc(int stockExchangeId);
+    public List<Stock> findByStockExchangeIdAndCompanyIdOrderByDateAsc(int stockExchangeId, int companyId);
 }

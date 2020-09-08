@@ -8,24 +8,23 @@
 //     float:right;
 // }
 
-// mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
-//     // background-color: green;
-//     border-color: green;
-//     // color:green;
-    
-// }
+.mat-form-field{
+    color:black;
+}
 
 
-.mat-radio-button.mat-accent.mat-radio-checked .mat-radio-outer-circle{
-    border-color:green; 
-  }
-  
-  .mat-radio-button.mat-accent .mat-radio-inner-circle{
-    color:green;
-    background-color:green ;
-  }
-  
-  .mat-radio-button.mat-accent .mat-radio-ripple .mat-ripple-element {
-      background-color:green;
-  }
+mat-icon{
+    // size: 0px;
+    font-size: 20px;
+    color: gray;
+}
+
+button.delete{
+    border:none;
+    background: none;
+    // text-decoration: none;
+    outline: none;
+}
+
+
 

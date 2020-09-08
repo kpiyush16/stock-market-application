@@ -134,6 +134,7 @@ public class CompanyController {
 	
 	@PostMapping("/companies/{id}/stockexchanges")
 	public void addStockExchange(@RequestBody int stockExchangeId, @PathVariable int id) {
+		restTemplate.postForObject("http://stock-exchange/stockexchanges/"+stockExchangeId+"/companies",id, Integer.class);
 		companyService.addStockExchange(id, stockExchangeId);
 	}
 	
