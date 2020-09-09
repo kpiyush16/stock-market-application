@@ -39,6 +39,12 @@ export class CompanyService {
     return this.http.post<CompanyModel>(this.companyUrl, company);
   }
 
+  public saveCompanies(companies: CompanyModel[]) {
+    companies.forEach(element => {
+      this.http.post<CompanyModel>(this.companyUrl, element);      
+    });
+  }
+
   deleteCompany(id: number): Observable<any> {
     return this.http.delete(`${this.companyUrl}/${id}`, { responseType: 'text' });
   }

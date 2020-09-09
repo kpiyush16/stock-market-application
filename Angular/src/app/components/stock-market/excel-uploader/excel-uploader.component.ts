@@ -40,41 +40,48 @@ export class ExcelUploaderComponent implements OnInit {
       var bstr = arr.join("");
       var workbook = XLSX.read(bstr, { type: "binary" });
       this.first_worksheet = workbook.Sheets[workbook.SheetNames[0]];
+      console.log(this.first_worksheet);
     }
     readFile.readAsArrayBuffer(this.fileUploaded);
+    this.readFirstSheet('stock');
   }
 
   readFirstSheet(dataType) {
-    this.readAsJson(this.first_worksheet, (jsonData: CompanyModel[]) => {
-      console.log(jsonData);
+    console.log("hi");
+    this.readAsJson(this.first_worksheet, (jsonData: any) => {
+      // console.log(jsonData);
+      console.log("hi");
       // post data
 
-      jsonData.map((data:any)=>{
+      // jsonData.map((data:any)=>{
 
-        (function(delay) {
-          var start = new Date().getTime();
-          while (new Date().getTime() < start + delay);
-      })(500)  
+      //   (function(delay) {
+      //     var start = new Date().getTime();
+      //     while (new Date().getTime() < start + delay);
+      // })(500)  
 
-        let service = null;
-        if(dataType == 'company'){
-          service = this.companyService.save(data);
-        } else if(dataType == 'stock'){
-          service = this.stockService.addStocks(data);
-        }
+      //   // let service = null;
+      //   if(dataType == 'company'){
+      //     // service = this.companyService.save(data);
+      //     this.companyService.save(data);
+      //   } else if(dataType == 'stock'){
+      //     // service = this.stockService.addStocks(data);
+      //     this.companyService.save(data);
+      //   }
   
-        service.subscribe((res:any)=>{
-          console.log(res);
-        }, err=>{
-          console.log(err);
-        })
-      })
+      //   // service.subscribe((res:any)=>{
+      //   //   console.log(res);
+      //   // }, err=>{
+      //   //   console.log(err);
+      //   // })
+      // })
 
     });
   }
 
   readAsJson(worksheet, cb) {
     var jsonData = XLSX.utils.sheet_to_json(worksheet, { raw: false });
+    console.log(jsonData);
     cb(jsonData);
   }
 
