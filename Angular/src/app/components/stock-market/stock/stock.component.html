@@ -112,7 +112,7 @@
                         <th scope="col ">Company Id</th>
                         <th scope="col ">Price</th>
                         <th scope="col ">Stock Exchange</th>
-                        <th scope="col ">Action</th>
+                        <th *ngIf="isAdmin" scope="col ">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -122,7 +122,7 @@
                         <td>{{ stock.companyId }}</td>
                         <td>{{ stock.price }}</td>
                         <td>{{ stock.stockExchange.name }}</td>
-                        <td>
+                        <td *ngIf="isAdmin">
                             <button (click)="deleteStock(stock.id)" class="btn btn-sm btn-danger btn-delete-user">
                                 <span *ngIf="isDeleting" class="spinner-border spinner-border-sm"></span>
                                 <span *ngIf="!isDeleting">Delete</span>

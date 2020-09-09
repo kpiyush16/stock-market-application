@@ -2,6 +2,7 @@ package com.example.ImportExcel.controller;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +16,16 @@ import com.example.ImportExcel.service.ImportExcelService;
 import com.example.ImportExcel.repository.ImportExcelRepo;
 
 import java.io.IOException;
-import java.util.ArrayList;s
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @RestController
 @CrossOrigin
 public class ImportExcelController {
+
+    @Autowired
+    private ImportExcelService importExcelService;
 
     @RequestMapping(value = "/import-excel", method = RequestMethod.POST)
     public ResponseEntity<List<ImportExcelEntity>> importExcelFile(@RequestParam("file") MultipartFile files) throws IOException, IOException {
@@ -35,7 +39,6 @@ public class ImportExcelController {
 
         for (int index = 0; index < worksheet.getPhysicalNumberOfRows(); index++) {
             if (index > 0) {
-                ImportExcelEntity product = new ImportExcelEntity();
 
                 //XSSFRow row = worksheet.getRow(index);
                 //Cell cell1 = row.getCell(0);
@@ -49,12 +52,15 @@ public class ImportExcelController {
                 Cell cell = worksheet.getRow(index).getCell(0);
                 String company_code = formatter.formatCellValue(cell); //Returns the formatted value of a cell as a String regardless of the cell type.
 
-                if(company_code != "") {
+                if(company_code != "")
+                {
+                    ImportExcelEntity product = new ImportExcelEntity();
+
                     product.setCompany_Code(company_code);
 
                     cell = worksheet.getRow(index).getCell(1);
-                    String Stock_Exchange = formatter.formatCellValue(cell); //Returns the formatted value of a cell as a String regardless of the cell type.
-//                    console.log(product.setStock_Exchange(Stock_Exchange));
+                    String se = formatter.formatCellValue(cell); //Returns the formatted value of a cell as a String regardless of the cell type.
+                    product.setStock_Exchange(se);
 
                     //product.setStock_Exchange(row.getCell(1).getStringCellValue());
 
@@ -75,12 +81,13 @@ public class ImportExcelController {
                     String Time = formatter.formatCellValue(cell); //Returns the formatted value of a cell as a String regardless of the cell type.
                     product.setTime(Time);
 
-
-                    ImportExcelService.addExcel(product);
                     productList.add(product);
+
+                    importExcelService.addExcel(product);
                 }
             }
         }
+
 
         return new ResponseEntity<>(productList, status);
 

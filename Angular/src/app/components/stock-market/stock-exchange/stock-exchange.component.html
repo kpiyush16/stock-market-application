@@ -15,7 +15,7 @@
                         <th scope="col ">Brief</th>
                         <th scope="col ">Remakrs</th>
                         <th scope="col ">Contact ID</th>
-                        <th scope="col ">Action</th>
+                        <th *ngif="isAdmin" scope="col ">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -25,7 +25,7 @@
                         <td>{{ stockExchange.brief }}</td>
                         <td>{{ stockExchange.remarks }}</td>
                         <td>{{ stockExchange.contactId }}</td>
-                        <td>
+                        <td *ngif="isAdmin">
                             <!-- <button (click)="deleteStockExchange(stockExchange.id)" class="btn btn-sm btn-danger btn-delete-user">
                                 <span *ngIf="isDeleting" class="spinner-border spinner-border-sm"></span>
                                 <span *ngIf="!isDeleting">Delete</span>

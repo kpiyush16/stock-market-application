@@ -18,7 +18,6 @@ export class StockMarketComponent implements OnInit {
   isAddMode: boolean = true;
   loading = false;
   submitted = false;
-  
   ngOnInit() {
 
   }

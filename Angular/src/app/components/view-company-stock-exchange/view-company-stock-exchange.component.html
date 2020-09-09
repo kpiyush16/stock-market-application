@@ -1,8 +1,8 @@
 <div class="container">
     <h2> Stock-Exchanges for Company </h2>
 
-    <button (click)="AddCompanyStockExchange(company.id) " class="btn btn-info " style="margin: 20px">Add Stock-exchange</button>
-    <button (click)="DeleteCompanyStockExchange(company.id) " class="btn btn-danger " style="margin: 20px">Delete Stock--exchange</button>
+    <button (click)="AddCompanyStockExchange(company.id) " class="btn btn-info " style="margin: 20px" *ngIf="isAdmin">Add Stock-exchange</button>
+    <button (click)="DeleteCompanyStockExchange(company.id) " class="btn btn-danger " style="margin: 20px" *ngIf="isAdmin">Delete Stock--exchange</button>
 
     <div class=" card my-5 ">
         <div class="card-body ">

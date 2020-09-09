@@ -20,7 +20,7 @@ public class ImportExcelService{
 
     public void addExcel(ImportExcelEntity excel) {
 
-        ImportExcelRepo.save(excel);
+        Importexcelrepo.save(excel);
 
     }
 

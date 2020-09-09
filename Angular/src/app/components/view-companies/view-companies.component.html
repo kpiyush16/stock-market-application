@@ -13,10 +13,10 @@
                         <th scope="col ">Code</th>
                         <th scope="col ">Sectors</th>
                         <th scope="col ">BOD</th>
-                        <th scope="col ">Add/Remove Sector</th>
+                        <th scope="col " *ngIf="isAdmin">Add/Remove Sector</th>
                         <th scope="col ">View Company Stock-Exchange</th>
-                        <th scope="col ">Add/Remove Board Of Directors</th>
-                        <th scope="col ">Add/Remove/Update Company</th>
+                        <th scope="col " *ngIf="isAdmin">Add/Remove Board Of Directors</th>
+                        <th scope="col ">Actions on Company</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,17 +32,17 @@
                         <td>
                             <span *ngFor="let bod of company.boardOfDirectors; let l=count ">{{bod}} </span>
                         </td>
-                        <td><button (click)="AddCompanySector(company.id) " class="btn btn-info ">Add Sector</button>
+                        <td *ngIf="isAdmin"><button (click)="AddCompanySector(company.id) " class="btn btn-info ">Add Sector</button>
                             <button (click)="DeleteCompanySector(company.id) " class="btn btn-danger " style="margin-left: 10px ">Delete Sector</button>
                         </td>
                         <td><button (click)="ViewCompanyStockExchange(company.id) " class="btn btn-info ">View Company Stock-Exchange</button>
                         </td>
-                        <td><button (click)="AddCompanyBOD(company.id) " class="btn btn-info ">Add BOD</button>
+                        <td *ngIf="isAdmin"><button (click)="AddCompanyBOD(company.id) " class="btn btn-info ">Add BOD</button>
                             <button (click)="DeleteCompanyBOD(company.id) " class="btn btn-danger " style="margin-left: 10px ">Remove BOD</button>
                         </td>
-                        <td><button (click)="deleteCompany(company.id) " class="btn btn-danger ">Delete</button>
+                        <td><button (click)="deleteCompany(company.id) " class="btn btn-danger " *ngIf="isAdmin">Delete</button>
                             <button (click)="companyDetails(company.id) " class="btn btn-info " style="margin-left: 10px ">Details</button>
-                            <button (click)="updateCompany(company.id) " class="btn btn-warning " style="margin-left: 10px ">Update</button>
+                            <button (click)="updateCompany(company.id) " class="btn btn-warning " style="margin-left: 10px " *ngIf="isAdmin">Update</button>
                         </td>
                     </tr>
                 </tbody>
