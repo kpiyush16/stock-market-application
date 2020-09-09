@@ -5,27 +5,27 @@
 
     <div class=" card my-5 ">
         <div class="card-body ">
-            <a class="btn btn-sm btn-success mb-2" routerLink="add-stockexchange">Add Stock Exchange</a>
+            <a class="btn btn-sm btn-success mb-2" routerLink="add-stockexchange" *ngIf="isAdmin">Add Stock Exchange</a>
             <table class="table table-bordered table-striped ">
                 <thead>
                     <tr>
                         <!-- <th scope="col ">Sector Id</th> -->
-                        <th scope="col ">ID</th>
+                        <!-- <th scope="col ">ID</th> -->
                         <th scope="col ">Name</th>
                         <th scope="col ">Brief</th>
                         <th scope="col ">Remakrs</th>
-                        <th scope="col ">Contact ID</th>
-                        <th *ngif="isAdmin" scope="col ">Action</th>
+                        <!-- <th scope="col ">Contact ID</th> -->
+                        <th *ngIf="isAdmin" scope="col ">Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr *ngFor="let stockExchange of stockExchangeList['stockExchangeList']">
-                        <td>{{ stockExchange.id }}</td>
+                        <!-- <td>{{ stockExchange.id }}</td> -->
                         <td>{{ stockExchange.name }}</td>
                         <td>{{ stockExchange.brief }}</td>
                         <td>{{ stockExchange.remarks }}</td>
-                        <td>{{ stockExchange.contactId }}</td>
-                        <td *ngif="isAdmin">
+                        <!-- <td>{{ stockExchange.contactId }}</td> -->
+                        <td *ngIf="isAdmin">
                             <!-- <button (click)="deleteStockExchange(stockExchange.id)" class="btn btn-sm btn-danger btn-delete-user">
                                 <span *ngIf="isDeleting" class="spinner-border spinner-border-sm"></span>
                                 <span *ngIf="!isDeleting">Delete</span>

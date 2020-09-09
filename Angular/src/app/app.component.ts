@@ -9,8 +9,8 @@ import { AuthenticationService } from './services/authentication.service';
 })
 export class AppComponent {
   title = 'stockmarket';
-  currentUser: any;
-  username:string;
+  currentUser:any = null;
+  username:string = null;
     constructor(
         private router: Router,
         private authenticationService: AuthenticationService
@@ -34,12 +34,6 @@ export class AppComponent {
     update(user){
       if(user){
         this.username=user.username;
-          // if(user.userType == "admin"){
-          //   this.isAdmin = true;
-          // }
-          // else if(user.userType == "user"){
-          //   this.isAdmin = true;
-          // }
       }
     }
 

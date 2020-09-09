@@ -17,10 +17,10 @@
                     <label for="price">Remarks</label>
                     <input type="text" [(ngModel)]="stockExchange.remarks" name="remarks" class="form-control" placeholder="Enter Remarks" required #code="ngModel">
                 </div>
-                <div class="form-group">
+                <!-- <div class="form-group">
                     <label for="contactId">Contact ID</label>
                     <input type="text" [(ngModel)]="stockExchange.contactId" name="contactId" class="form-control" placeholder="Enter Contact Number" required #code="ngModel">
-                </div>
+                </div> -->
 
                 <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-info">Submit</button>
             </form>

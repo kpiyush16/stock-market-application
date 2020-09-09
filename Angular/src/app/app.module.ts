@@ -9,13 +9,10 @@ import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { HomeComponent } from './components/home/home.component';
 import { StockMarketComponent } from './components/stock-market/stock-market.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { CompanyComponent } from './components/company/company.component';
-import { UserComponent } from './components/user/user.component';
 import { ComparisonComponent } from './components/comparison/comparison.component';
 import { IpoManageComponent } from './components/ipo-manage/ipo-manage.component';
 import { StockExchangeService } from './services/stock-exchange.service';
-import { UserService } from "./services/user.service";
 import { CompanyService } from "./services/company.service";
 import { StockComponent } from './components/stock-market/stock/stock.component';
 import { StockExchangeComponent } from './components/stock-market/stock-exchange/stock-exchange.component';
@@ -68,9 +65,7 @@ import { EditStockexchangeComponent } from './components/stock-market/stock-exch
     RegisterComponent,
     HomeComponent,
     StockMarketComponent,
-    DashboardComponent,
     CompanyComponent,
-    UserComponent,
     ComparisonComponent,
     IpoManageComponent,
     StockComponent,
@@ -120,7 +115,6 @@ import { EditStockexchangeComponent } from './components/stock-market/stock-exch
   ],
   providers: [
     StockExchangeService,
-    UserService,
     CompanyService,
     AuthenticationService,
     DatePipe,

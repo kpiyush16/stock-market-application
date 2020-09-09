@@ -52,17 +52,17 @@ const routes: Routes = [
         path: "stock", 
         component: StockComponent,
         children: [
-          {path: 'update-stock/:id', component: EditStockComponent},
-          {path: 'add-stock', component: AddStockComponent},
-          {path: 'upload-excel', component: ExcelUploaderComponent}
+          {path: 'update-stock/:id', component: EditStockComponent, data:{roleCheck:[true]}},
+          {path: 'add-stock', component: AddStockComponent, data:{roleCheck:[true]}},
+          {path: 'upload-excel', component: ExcelUploaderComponent, data:{roleCheck:[true]}}
         ]
       },
       {
         path: 'stock-exchange', 
-        component: StockExchangeComponent,
+        component: StockExchangeComponent, 
         children: [
-          {path: 'update-stockexchange/:id', component: EditStockexchangeComponent},
-          {path: 'add-stockexchange', component: AddStockexchangeComponent},
+          {path: 'update-stockexchange/:id', component: EditStockexchangeComponent, data:{roleCheck:[true]}},
+          {path: 'add-stockexchange', component: AddStockexchangeComponent, data:{roleCheck:[true]}},
         ]
       }
     ]
