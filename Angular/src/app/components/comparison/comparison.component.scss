@@ -13,18 +13,84 @@
 }
 
 
-mat-icon{
+mat-icon.delete{
     // size: 0px;
     font-size: 20px;
-    color: gray;
+    color: red;
 }
 
 button.delete{
+    margin-right: -15px;
     border:none;
     background: none;
     // text-decoration: none;
     outline: none;
 }
 
+mat-icon.add{
+    // size: 0px;
+    font-size: 25px;
+    color: green;
+}
+
+button.add{
+    background-color: lightgreen;
+    // font-size : 20px;
+    border-color: green;
+    outline: none;
+    // color: lightgreen;
+}
+
+div.add{
+    font-size: 20px;
+}
+
+div.nochart{
+    margin-top: 10%;
+    margin-left: 10%;
+    font-size: 30px;
+    font-style: italic;
+}
+
+mat-radio-group.chartType{
+    margin-left: 30%;
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+mat-radio-button.bar{
+    margin-right: 5%;
+}
+
+div.addEntity{
+    // margin-top: 2%;
+    font-size: 17px;
+}
+
+div.chartDisplay{
+    margin-top: 2%;
+}
+
+div.addView{
+    margin-left: 20%;
+    
+}
+
+mat-form-field{
+    size:150%;
+    width:50%;
+    font-size: 125%;
+}
 
 
+
+mat-radio-button.company{
+    margin-left: 10%;
+    margin-right: 5%;
+    // font-size: 125%;
+}
+
+mat-radio-group.entityType{
+    font-size: 125%;
+    margin-bottom: 10%;
+}

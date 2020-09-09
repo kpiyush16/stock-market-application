@@ -118,7 +118,7 @@ export class ComparisonComponent implements OnInit {
             if(this.sectorList.length == 0){
               this.sectorList.push(sector1);
             }
-            else if(!this.sectorList.some(sector2=>(sector2.id == sector1.id))){
+            else if(!this.sectorList.some(sector2=>sector2.id == sector1.id)){
               this.sectorList.push(sector1);
             }
           })
@@ -285,9 +285,9 @@ export class ComparisonComponent implements OnInit {
 
   deleteSector(i:number){
     console.log("Calling deleteSector", i);
-    let index = this.lineChartData.findIndex(obj=>{
+    let index = this.lineChartData.findIndex(obj=>
       obj.label == "Sector:"+this.chartSectorList[i].name+"("+this.chartSectorSEList[i].name+")"
-    })
+    )
     this.chartSectorList.splice(i,1);
     this.chartSectorSEList.splice(i,1);
     console.log(this.chartSectorList, this.chartSectorSEList);
@@ -296,9 +296,10 @@ export class ComparisonComponent implements OnInit {
 
   deleteCompany(i:number){
     console.log("Calling deleteCompany", i);
-    let index = this.lineChartData.findIndex(obj=>{
-      obj.label == "Company:"+this.chartCompanyList[i].name+"("+this.chartCompanySEList[i].name+")"
-    })
+    let index = this.lineChartData.findIndex(obj=>
+      obj.label.toString() == "Company:"+this.chartCompanyList[i].name+"("+this.chartCompanySEList[i].name+")"
+    )
+    // console.log("Company:"+this.chartCompanyList[i].name+"("+this.chartCompanySEList[i].name+")");
     this.chartCompanyList.splice(i,1);
     this.chartCompanySEList.splice(i,1);
     console.log(this.chartCompanyList, this.chartCompanySEList);
@@ -306,6 +307,7 @@ export class ComparisonComponent implements OnInit {
   }
 
   changeData(i:number){
+    console.log("index = ", i);
     this.lineChartData.splice(i,1);
     if(this.lineChartData.length == 0){
       this.lineChartLabels = [];
