@@ -1,10 +1,13 @@
 <div class="container">
     <h1> Upload Excel </h1>
-    <div class="card my-5">
+    <!-- <div class="card my-5">
         <div class="card-body">
 
         <label for="myfile">Select a file:</label>
         <input type="file" id="myfile" name="myfile">
         </div>
-    </div>
+    </div> -->
+    <div class="col-md-8 form-group">    
+        <input type="file" class="form-control" (change)="uploadedFile($event)" placeholder="Upload file" accept=".xlsx">
+     </div>
 </div>
