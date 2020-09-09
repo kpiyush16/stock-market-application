@@ -4,6 +4,7 @@ import { StockExchange } from './stock-exchange';
 import { HttpClient } from '@angular/common/http';
 import { StockExchangeService } from 'src/app/services/stock-exchange.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-stock-exchange',
@@ -16,9 +17,11 @@ export class StockExchangeComponent implements OnInit {
   stockExchange: StockExchange = new StockExchange();
   response: any;
   // isDeleting: boolean = false;
-
+  isAdmin: boolean;
   stockExchangeList: StockExchangeList = new StockExchangeList();
-  constructor(private stockService: StockExchangeService,  private router: Router) { }
+  constructor(private auth: AuthenticationService, private stockService: StockExchangeService,  private router: Router) { 
+    this.isAdmin = this.auth.isAdminValue;
+  }
   
 
   ngOnInit() {
