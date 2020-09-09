@@ -11,7 +11,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <div class=" dropdown-item " href="# ">
                             <!-- <a class="dropdown-item " [routerLink]="['add-company'] ">Add new Company</a> -->
-                            <a class="dropdown-item " routerLink="/add-company">Add new Company</a>
+                            <a class="dropdown-item " routerLink="/add-company" *ngIf="isAdmin">Add new Company</a>
                         </div>
                         <div class="dropdown-item" href="#">
                             <!-- <a class="dropdown-item" [routerLink]="['view-companies']">Show All Companies</a> -->
@@ -29,7 +29,7 @@
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <div class=" dropdown-item " href="# ">
                             <!-- <a class="dropdown-item " [routerLink]="['add-sector'] ">Add new Sector</a> -->
-                            <a class="dropdown-item " routerLink="/add-sector">Add new Sector</a>
+                            <a class="dropdown-item " routerLink="/add-sector" *ngIf="isAdmin">Add new Sector</a>
                         </div>
                         <div class="dropdown-item" href="#">
                             <!-- <a class="dropdown-item" [routerLink]="['view-sectors']">Show All Sectors</a> -->

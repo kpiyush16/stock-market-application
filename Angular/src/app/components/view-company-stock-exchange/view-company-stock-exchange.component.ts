@@ -6,6 +6,7 @@ import { CompanyModel } from '../../models/company-model'
 import { CompanyBod } from '../../models/company-bod'
 import { Sector } from '../../models/sector'
 import { SectorService } from '../../services/sector.service';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-view-company-stock-exchange',
@@ -23,10 +24,12 @@ export class ViewCompanyStockExchangeComponent implements OnInit {
   Res: any;
   ListofSe: StockExchange[];
   Res1: any;
+  isAdmin: boolean;
 
  
    constructor(private route: ActivatedRoute,private router: Router,
-    private companyService: CompanyService, private sectorService: SectorService) {
+    private companyService: CompanyService, private sectorService: SectorService, private authenticationService: AuthenticationService) {
+      this.isAdmin = this.authenticationService.isAdminValue;
   }
  
   ngOnInit() {

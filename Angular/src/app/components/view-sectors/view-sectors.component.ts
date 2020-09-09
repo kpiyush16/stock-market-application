@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Sector } from '../../models/sector'
 import { SectorService } from '../../services/sector.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 
 @Component({
@@ -14,9 +15,11 @@ export class ViewSectorsComponent implements OnInit {
     //companies: CompanyModel[];
     ListofSectors: Sector[];
     Res: any;
+    isAdmin: boolean;
 
-  constructor(private sectorService: SectorService, private router: Router) {
-  }
+  constructor(private sectorService: SectorService, private router: Router, private authenticationService: AuthenticationService) {
+    this.isAdmin = this.authenticationService.isAdminValue;
+ }
    
   ngOnInit() {
     //  this.companyService.findAll().subscribe(data => {

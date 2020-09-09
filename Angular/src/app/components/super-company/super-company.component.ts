@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-super-company',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SuperCompanyComponent implements OnInit {
 
-  constructor() { }
+  isAdmin: boolean;
+
+  constructor(private authenticationService: AuthenticationService) {
+    this.isAdmin = this.authenticationService.isAdminValue;
+ }
 
   ngOnInit(): void {
   }

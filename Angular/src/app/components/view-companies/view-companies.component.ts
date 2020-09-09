@@ -3,6 +3,7 @@ import { CompanyModel } from '../../models/company-model'
 import { CompanyList } from '../../models/company-list'
 import { CompanyService } from '../../services/company.service';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-view-companies',
@@ -15,8 +16,10 @@ export class ViewCompaniesComponent implements OnInit {
   //companies: CompanyModel[];
   ListofCompanies: CompanyModel[];
   Res: any;
+  isAdmin: boolean;
 
-  constructor(private companyService: CompanyService, private router: Router) {
+  constructor(private companyService: CompanyService, private router: Router, private authenticationService: AuthenticationService) {
+    this.isAdmin = this.authenticationService.isAdminValue;
  }
 
  ngOnInit() {
