@@ -31,9 +31,9 @@ export class CompanyService {
     return this.http.get<StockExchange[]>(`${this.companyUrl}/${id}/${'stockexchanges'}`);
   }
 
-  public findAll2(): Observable<StockExchange[]> {
-    return this.http.get<StockExchange[]>(this.seUrl);
-  }
+  // public findAll2(): Observable<StockExchange[]> {
+  //   return this.http.get<StockExchange[]>(this.seUrl);
+  // }
 
   public save(company: CompanyModel) {
     return this.http.post<CompanyModel>(this.companyUrl, company);

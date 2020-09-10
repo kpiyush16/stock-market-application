@@ -6,7 +6,7 @@ import { CompanyBod } from '../../models/company-bod'
 import { Sector } from '../../models/sector'
 import { SectorService } from '../../services/sector.service';
 import { StockExchange } from '../../models/stock-exchange'
-
+import { StockExchangeService } from "../../services/stock-exchange.service";
 
 @Component({
   selector: 'app-add-company-stock-exchange',
@@ -27,7 +27,7 @@ export class AddCompanyStockExchangeComponent implements OnInit {
   Res1: any;
 
   constructor(private route: ActivatedRoute,private router: Router,
-    private companyService: CompanyService, private sectorService: SectorService) { }
+    private companyService: CompanyService, private sectorService: SectorService, private stockexchangeservice: StockExchangeService) { }
 
   ngOnInit() {
     this.company = new CompanyModel();
@@ -40,19 +40,27 @@ export class AddCompanyStockExchangeComponent implements OnInit {
           this.company = data;
         }, error => console.log(error));
   
-        this.reloadData();
+        // this.reloadData();
+
+        this.stockexchangeservice.getStockExchanges().subscribe(data => {
+          //this.Res1 = data;
+          //console.log(data);
+          this.Res1 = data;
+          this.ListofSe = this.Res1.stockExchangeList;  
+          //console.log(this.Res1);
+        });  
   }
 
-  reloadData(){
-    this.companyService.findAll2().subscribe(data => {
-      //this.Res1 = data;
-      //console.log(data);
-      this.Res1 = data;
-      this.ListofSe = this.Res1.stockExchangeList;  
-      //console.log(this.Res1);
-    });  
+  // reloadData(){
+  //   this.companyService.findAll2().subscribe(data => {
+  //     //this.Res1 = data;
+  //     //console.log(data);
+  //     this.Res1 = data;
+  //     this.ListofSe = this.Res1.stockExchangeList;  
+  //     //console.log(this.Res1);
+  //   });  
   
-   }
+  //  }
 
    AddCompanyStockExchange() {
     //console.log(this.company);
