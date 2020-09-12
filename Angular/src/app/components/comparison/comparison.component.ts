@@ -199,14 +199,17 @@ export class ComparisonComponent implements OnInit {
               let stockPriceSum = 0.0;
               let count = 0;
               stocks.forEach(stock =>{
-                if(stock.date.toString() == date){
-                  companies.forEach(company=>{
-                    if(stock.companyId == company.id){
-                      stockPriceSum += stock.price;
-                      count++;
-                    }
-                  })
+                if(stock.date){
+                  if(stock.date.toString() == date){
+                    companies.forEach(company=>{
+                      if(stock.companyId == company.id){
+                        stockPriceSum += stock.price;
+                        count++;
+                      }
+                    })
+                  }
                 }
+                
               })
               if(count == 0){
                 chartData.push(0.0);
