@@ -1,5 +1,7 @@
 # stock-market-application
 
+### Before using Jenkinsfile, remove all the pre-existing networks and containers of the same as below.
+
 ### Step1: Create network named company-network
 * docker network create company-network
 
