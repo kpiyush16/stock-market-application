@@ -35,7 +35,7 @@ pipeline {
             steps {
                 bat "docker network create company-network"
                 bat "docker pull mysql/mysql-server:8.0.21"
-                bat "docker container run --name mysqldb --network company-network -e MYSQL_HOST_ROOT=%% -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=stockmarket -d mysql/mysql-server:8.0.21"
+                bat "docker container run --name mysqldb --network company-network -e MYSQL_ROOT_HOST=%% -e MYSQL_ROOT_PASSWORD=root -e MYSQL_DATABASE=stockmarket -d mysql/mysql-server:8.0.21"
                 bat "docker container run --network company-network --name eureka-ms-container -p 8761:8761 -d eureka-ms"
                 bat "docker container run --network company-network --name gateway-ms-container -p 8989:8989 -d gateway-ms"
                 bat "docker container run --network company-network --name user-ms-container -p 8081:8081 -d user-ms"
