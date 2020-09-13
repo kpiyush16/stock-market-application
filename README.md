@@ -1,6 +1,19 @@
 # stock-market-application
 
-### Before using Jenkinsfile, remove all the pre-existing networks and containers and also images(needed to save space) of the same name as the ones to be created.
+## Before using Jenkinsfile, remove all the pre-existing networks and containers and also images(needed to save space) of the same name as the ones to be created.
+### Remove Network
+* docker network rm company-network
+
+### Stop and Remove MS Container
+* docker stop gateway-ms-container
+* docker rm gateway-ms-container
+
+### Stop and Remove mySql Container
+* docker stop mysqldb
+* docker rm mysqldb
+
+### Remove Image
+* docker rmi gateway-ms
 
 ### Step1: Create network named company-network
 * docker network create company-network
