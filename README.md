@@ -1,5 +1,6 @@
 # stock-market-application
 
+## Jenkins steps:
 ### Before using Jenkinsfile, remove all the pre-existing(if any) networks and containers and also images(needed to save space) of the same name as the ones to be created.
 #### Remove Network
 * docker network rm company-network
@@ -13,6 +14,7 @@
 * docker rmi gateway-ms
 
 
+## Docker steps: [Not needed when you are running jenkins file]
 ### Step1: Create network named company-network
 * docker network create company-network
 
